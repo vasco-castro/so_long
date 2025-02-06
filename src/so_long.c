@@ -6,11 +6,12 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:28 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/02/06 20:10:45 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/02/06 21:18:52 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "../minilibx-linux/mlx.h"
 
 void	so_long()
 {

@@ -25,10 +25,11 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(MLX)
 	@echo "Building $(NAME)."
-	@$(CC) $(MLX) $(MLXFLAGS) $(OBJS)
+	@$(CC) $(OBJS) $(MLX) $(MLXFLAGS) -o $(NAME)
 
 $(MLX):
-	make -s -C $(MLX_DIR)
+	@echo "Building $(MLX)."
+	@make -s -C $(MLX_DIR)
 
 clean:
 	@echo "Cleaning all objects."
@@ -37,7 +38,7 @@ clean:
 fclean: clean
 	@echo "Cleaning all $(NAME) files."
 	@rm -f $(NAME)
-	@make clean -C $(MLX_DIR)
+	@make clean -s -C $(MLX_DIR)
 
 re: fclean all
 
