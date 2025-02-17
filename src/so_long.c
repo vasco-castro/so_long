@@ -6,27 +6,61 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:28 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/02/06 21:18:52 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:07:10 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "../minilibx-linux/mlx.h"
 
-void	so_long()
+static void	so_long(void)
 {
-	void	*mlx;
-	void	*mlx_win;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
+	game()->mlx = mlx_init();
+	if (!game()->mlx)
+		exit(1);
+	game()->win = mlx_new_window(
+		game()->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Hello world!"
+		);
+	if (!game()->win)
+	{
+		free(game()->win);
+		exit(1);
+	}
+	mlx_hook(game()->win, 4, 0, mouse_handler, &game);
+	mlx_hook(game()->win, 2, 1, key_handler, &game);
+	mlx_hook(game()->win, 17, 1, close_window, &game);
+	mlx_loop(game()->mlx);
 }
 
-int	main(int argc, char const *argv[])
+void	map_init(char *map)
 {
-	(void) argc;
-	(void) argv;
-	so_long();
+	ft_printf("%d", DEBUG_MODE);
+	debug("MAP -> %s", map);
+}
+
+t_game	*game(void)
+{
+	static t_game	data;
+
+	return (&data);
+}
+
+// TODO: DO DEBUG CHECKER ;)
+int	main(int argc, char *argv[])
+{
+	if (argc == 1)
+	{
+		ft_printf("You didn't pass the map as an argument.");
+		exit(1);
+	}
+	else if (argc == 2)
+	{
+		map_init(argv[1]);
+		so_long();
+	}
+	else
+	{
+		ft_printf("Exit\nToo many arguments.\n");
+		exit(1);
+	}
 	return (0);
 }
