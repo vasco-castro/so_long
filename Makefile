@@ -20,7 +20,7 @@ GNL_DIR = $(INCLUDES_DIR)/get_next_line
 GNL = $(GNL_DIR)/get_next_line.a
 
 # Source files (with directories applied)
-SRCS = $(addsuffix .c, $(addprefix $(SRCS_DIR)/, so_long handlers))
+SRCS = $(addsuffix .c, $(addprefix $(SRCS_DIR)/, so_long handlers parsing))
 
 # Object files convertion
 OBJS := $(SRCS:%.c=%.o)

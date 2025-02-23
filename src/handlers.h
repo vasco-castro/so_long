@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 13:25:15 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/02/17 19:16:48 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/02/23 18:26:36 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define D 100
 
 int	close_window(void);
-int key_handler(int keycode);
-int mouse_handler(int mousecode, int x, int y);
+int	key_handler(int keycode);
+int	mouse_handler(int mousecode, int x, int y);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:06 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/02/17 19:05:42 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/02/23 18:23:25 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@
 
 # define WINDOW_HEIGHT 720
 # define WINDOW_WIDTH 1280
+
+# define PLAYER 'P'
+# define WALL '1'
+# define BACKGROUND '0'
+# define COLLECTIBLE 'C'
+# define EXIT 'E'
 
 typedef struct s_position
 {
@@ -68,6 +74,11 @@ typedef struct s_game
 	void	*win;
 	t_map	map;
 }	t_game; //TODO: Might call it just t_mlx and not need img pointer
+
+bool	fill(char *map[], t_position size, int row, int col);
+bool	flood_fill(char *map[], t_position size, t_position start);
+
+bool	parse_map(char *map_path);
 
 t_game	*game(void);
 

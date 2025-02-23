@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:28 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/02/17 19:07:10 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/02/23 18:21:56 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,11 @@ static void	so_long(void)
 	mlx_loop(game()->mlx);
 }
 
-void	map_init(char *map)
-{
-	ft_printf("%d", DEBUG_MODE);
-	debug("MAP -> %s", map);
-}
-
-t_game	*game(void)
-{
-	static t_game	data;
-
-	return (&data);
-}
+// void	map_init(char *map)
+// {
+// 	ft_printf("%d", DEBUG_MODE);
+// 	debug("MAP -> %s", map);
+// }
 
 // TODO: DO DEBUG CHECKER ;)
 int	main(int argc, char *argv[])
@@ -54,7 +47,7 @@ int	main(int argc, char *argv[])
 	}
 	else if (argc == 2)
 	{
-		map_init(argv[1]);
+		parse_map(argv[1]);
 		so_long();
 	}
 	else
@@ -63,4 +56,11 @@ int	main(int argc, char *argv[])
 		exit(1);
 	}
 	return (0);
+}
+
+t_game	*game(void)
+{
+	static t_game	data;
+
+	return (&data);
 }
