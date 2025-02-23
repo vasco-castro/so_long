@@ -6,14 +6,13 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 13:25:15 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/02/23 18:26:36 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/02/23 19:18:17 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HANDLERS_H
 # define HANDLERS_H
 
-# include "../includes/ft_printf/ft_printf.h"
 # include "so_long.h"
 
 # define CLOSE 17

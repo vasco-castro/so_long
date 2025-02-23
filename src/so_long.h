@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:06 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/02/23 18:23:25 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/02/23 19:19:45 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,7 @@
 # define SO_LONG_H
 
 # include "../includes/minilibx-linux/mlx.h"
-# include "../includes/ft_printf/ft_printf.h"
-# include "../includes/get_next_line/get_next_line.h"
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
-
+# include "../includes/libft/libft.h"
 # include "handlers.h"
 
 # define WINDOW_HEIGHT 720
@@ -59,7 +53,7 @@ typedef struct s_collectable
 
 typedef struct s_map
 {
-	char		*map;
+	char		**map;
 	t_position	size;
 
 	t_player	player;
