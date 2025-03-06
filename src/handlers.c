@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:41:02 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/02/23 18:25:58 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/03/06 19:13:35 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	close_window(void)
 {
-	ft_printf("It was good to have you, bye ;)");
+	ft_printf("It was good to have you, bye ;)\n");
 	if (game()->win != NULL)
 		mlx_destroy_window(game()->mlx, game()->win);
 	if (game()->mlx != NULL)
@@ -32,15 +32,15 @@ int	key_handler(int keycode)
 	if (keycode == ESC || keycode == CLOSE)
 		close_window();
 	else if (keycode == W || keycode == UP)
-		ft_printf("UP");
+		ft_printf("UP\n");
 	else if (keycode == A || keycode == LEFT)
-		ft_printf("LEFT");
+		ft_printf("LEFT\n");
 	else if (keycode == S || keycode == DOWN)
-		ft_printf("DOWN");
+		ft_printf("DOWN\n");
 	else if (keycode == D || keycode == RIGHT)
-		ft_printf("RIGHT");
+		ft_printf("RIGHT\n");
 	else
-		ft_printf("%d\n", keycode);
+		ft_printf("KEY: \033[31m%d\033[0m\n", keycode);
 	return (EXIT_SUCCESS);
 }
 

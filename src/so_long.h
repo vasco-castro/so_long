@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:06 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/02/23 19:19:45 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/03/06 20:34:01 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define WALL '1'
 # define BACKGROUND '0'
 # define COLLECTIBLE 'C'
+# define ENEMY 'X'
 # define EXIT 'E'
 
 typedef struct s_position
@@ -69,7 +70,7 @@ typedef struct s_game
 	t_map	map;
 }	t_game; //TODO: Might call it just t_mlx and not need img pointer
 
-bool	fill(char *map[], t_position size, int row, int col);
+bool	fill(char *map[], t_position size, t_position p);
 bool	flood_fill(char *map[], t_position size, t_position start);
 
 bool	parse_map(char *map_path);
