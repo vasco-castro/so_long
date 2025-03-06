@@ -4,7 +4,7 @@ CC = cc -Wall -Wextra -Werror
 
 # Directories
 SRCS_DIR = ./src
-INCLUDES_DIR = ./includes
+INCLUDES_DIR = ./inc
 MAPS_DIR = ./maps
 
 #Libraries and it's directories
@@ -14,7 +14,7 @@ MLX_FLAGS = -L. -lXext -L. -lX11
 
 LIBFT_DIR = $(INCLUDES_DIR)/libft
 LIBFT = $(LIBFT_DIR)/libft.a
-LIBFT_FLAGS = -L$(LIBFT_DIR)
+LIBFT_FLAGS = -L$(LIBFT_DIR)/inc
 
 # Source files (with directories applied)
 SRCS = $(addsuffix .c, $(addprefix $(SRCS_DIR)/, so_long handlers parsing))

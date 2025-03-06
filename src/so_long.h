@@ -13,8 +13,8 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../includes/minilibx-linux/mlx.h"
-# include "../includes/libft/libft.h"
+# include "../inc/minilibx-linux/mlx.h"
+# include "../inc/libft/inc/libft.h"
 # include "handlers.h"
 
 # define WINDOW_HEIGHT 720
