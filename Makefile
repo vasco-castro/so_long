@@ -1,3 +1,5 @@
+include colors.mk
+
 NAME = so_long
 
 CC = cc -Wall -Wextra -Werror
@@ -26,23 +28,23 @@ OBJS := $(SRCS:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(MLX) $(LIBFT) $(OBJS)
-	@echo "\033[1;35mBuilding $(NAME).\033[0m"
+	@echo "$(GREEN)Building $(NAME).$(RESET)"
 	@$(CC) $(OBJS) $(LIBFT) $(LIBFT_FLAGS) $(MLX) $(MLX_FLAGS) -o $(NAME)
 
 $(LIBFT):
-	@echo "\033[1;32mBuilding $(LIBFT).\033[0m"
+	@echo "$(GREEN)Building LIBFT.$(RESET)"
 	@make -s -C $(LIBFT_DIR)
 
 $(MLX):
-	@echo "\033[1;32mBuilding $(MLX).\033[0m"
+	@echo "$(GREEN)Building MLX.$(RESET)"
 	@make -s -C $(MLX_DIR)
 
 clean:
-	@echo "\033[1;31mCleaning objects...\033[0m"
+	@echo "$(YELLOW)Cleaning objects.$(RESET)"
 	@rm -f $(OBJS)
 
 fclean: clean
-	@echo "\033[1;31mCleaning binaries...\033[0m"
+	@echo "$(YELLOW)Cleaning binaries.$(RESET)"
 	@rm -f $(NAME)
 	@make clean -s -C $(MLX_DIR)
 	@make fclean -s -C $(LIBFT_DIR)

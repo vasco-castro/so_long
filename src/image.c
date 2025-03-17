@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 21:00:07 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/03/07 21:16:51 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:25:41 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void ft_put_image(void)
 	t_image i;
 
 	i.image = mlx_new_image(game()->mlx, 16, 16);
+
 	i.address = mlx_get_data_addr(i.image, &i.bits_per_pixel, &i.size_line, &i.endian);
+	
 	ft_memcpy(i.address, "s4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vf",
 	 ft_strlen("s4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vf"));
 	i.width = 16;

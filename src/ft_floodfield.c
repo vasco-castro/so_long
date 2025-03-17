@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 19:51:37 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/03/07 20:01:00 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:22:14 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static bool	fill(char *map[], t_position p)
 {
 	t_position	temp_p;
 
+	/* Check if it's surrounded by walls before flood_field */
+	/* TODO: Floodfill until the amount of Collectibles is flooded and exit too */
 	if (map[p.y][p.x] == EXIT)
 		return (1);
 	map[p.y][p.x] = 'F';

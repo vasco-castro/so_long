@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:05:40 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/03/07 19:52:40 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:20:49 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ bool	parse_map(char *map_path)
 	char	*line;
 
 	game()->map.size.y = 0;
-	game()->map.map = malloc(sizeof(char **) * 6); //TODO: find how many lines to alloc
+	/*TODO: find how many lines to alloc the right ammount */
+	game()->map.map = malloc(sizeof(char **) * 6);
 	fd = open(map_path, O_RDONLY);
 	if (fd < 1)
 		exit(1); // TODO: launch MAP-ERROR;
