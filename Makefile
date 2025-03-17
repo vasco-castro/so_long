@@ -17,7 +17,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 LIBFT_FLAGS = -L$(LIBFT_DIR)/inc
 
 # Source files (with directories applied)
-SRCS = $(addsuffix .c, $(addprefix $(SRCS_DIR)/, so_long handlers parsing))
+SRCS = $(addsuffix .c, $(addprefix $(SRCS_DIR)/, so_long handlers parsing ft_floodfield image))
 
 # Object files convertion
 OBJS := $(SRCS:%.c=%.o)
