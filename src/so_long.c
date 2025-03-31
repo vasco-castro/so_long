@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:28 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/03/07 21:12:20 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/03/31 19:34:04 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ static void	so_long(void)
 		exit(1);
 	}
 
-	ft_put_image();
+	ft_put_image(WALL_TEXTURE, 0, 0);
+	ft_put_image(WALL_TEXTURE, 0, 1);
+	ft_put_image(WALL_TEXTURE, 1, 0);
+	ft_put_image(PLAYER_TEXTURE, 1, 1);
+	ft_put_image(COLLECTIBLE_TEXTURE, 2, 2);
+	ft_put_image(WALL_TEXTURE, 5, 5);
+	ft_put_image(EXIT_TEXTURE, 7, 5);
 
 	mlx_hook(game()->win, 4, 0, mouse_handler, &game);
 	mlx_hook(game()->win, 2, 1, key_handler, &game);
 	mlx_hook(game()->win, 17, 1, close_window, &game);
 	mlx_loop(game()->mlx);
 }
-
-// void	map_init(char *map)
-// {
-// 	ft_printf("%d", DEBUG_MODE);
-// 	debug("MAP -> %s", map);
-// }
 
 // TODO: DO DEBUG CHECKER ;)
 int	main(int argc, char *argv[])

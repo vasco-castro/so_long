@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:06 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/03/07 21:15:25 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/03/31 19:31:27 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@
 # define COLLECTIBLE 'C'
 # define ENEMY 'X'
 # define EXIT 'E'
+
+# define PLAYER_TEXTURE "./textures/hugo/char.xpm"
+# define WALL_TEXTURE "./textures/hugo/wall.xpm"
+# define EXIT_TEXTURE "./textures/hugo/exit.xpm"
+# define COLLECTIBLE_TEXTURE "./textures/hugo/collectible.xpm"
 
 typedef struct s_image
 {
@@ -83,7 +88,7 @@ typedef struct s_game
 
 bool	flood_fill(void);
 bool	parse_map(char *map_path);
-void	ft_put_image(void);
+void	ft_put_image(char *texture, int x, int y);
 
 t_game	*game(void);
 
