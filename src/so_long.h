@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:06 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/03/31 19:31:27 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/10 20:56:28 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,12 @@
 
 # include "../inc/minilibx-linux/mlx.h"
 # include "../inc/libft/inc/libft.h"
-# include "handlers.h"
+# include "handlers/handlers.h"
+# include "rendering/rendering.h"
+# include "parsing/parsing.h"
 
 # define WINDOW_HEIGHT 720
 # define WINDOW_WIDTH 1280
-
-# define PLAYER 'P'
-# define WALL '1'
-# define BACKGROUND '0'
-# define COLLECTIBLE 'C'
-# define ENEMY 'X'
-# define EXIT 'E'
-
-# define PLAYER_TEXTURE "./textures/hugo/char.xpm"
-# define WALL_TEXTURE "./textures/hugo/wall.xpm"
-# define EXIT_TEXTURE "./textures/hugo/exit.xpm"
-# define COLLECTIBLE_TEXTURE "./textures/hugo/collectible.xpm"
 
 typedef struct s_image
 {
@@ -53,7 +43,7 @@ typedef struct s_player
 {
 	t_position	position;
 	int			moves;
-	int			collectables;
+	int			collectibles;
 }	t_player;
 
 typedef struct s_enemy
@@ -62,11 +52,11 @@ typedef struct s_enemy
 	bool		alive; //TODO: make a way to kill enemies
 }	t_enemy;
 
-typedef struct s_collectable
+typedef struct s_collectible
 {
 	t_position	position;
 	bool		active;
-}	t_collectable;
+}	t_collectible;
 
 typedef struct s_map
 {
@@ -75,7 +65,7 @@ typedef struct s_map
 
 	t_player	player;
 	t_enemy		*enemies;
-	t_position	*collectables;
+	t_position	*collectibles;
 	t_position	exit;
 }	t_map;
 
@@ -85,10 +75,6 @@ typedef struct s_game
 	void	*win;
 	t_map	map;
 }	t_game; //TODO: Might call it just t_mlx and not need img pointer
-
-bool	flood_fill(void);
-bool	parse_map(char *map_path);
-void	ft_put_image(char *texture, int x, int y);
 
 t_game	*game(void);
 
