@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:06 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/10 20:56:28 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/20 16:28:14 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,6 @@ typedef struct s_image
 	int		size_line;
 	int		endian;
 }		t_image;
-
-typedef struct s_position
-{
-	int		x;
-	int		y;
-}	t_position;
 
 typedef struct s_player
 {
@@ -74,7 +68,7 @@ typedef struct s_game
 	void	*mlx;
 	void	*win;
 	t_map	map;
-}	t_game; //TODO: Might call it just t_mlx and not need img pointer
+}	t_game;
 
 t_game	*game(void);
 
