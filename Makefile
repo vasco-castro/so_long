@@ -19,7 +19,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 LIBFT_FLAGS = -L$(LIBFT_DIR)/inc
 
 # Source files (with directories applied)
-SRCS = $(addsuffix .c, $(addprefix $(SRCS_DIR)/, so_long handlers parsing ft_floodfield image))
+SRCS = $(addsuffix .c, $(addprefix $(SRCS_DIR)/, so_long handlers/handlers parsing/parsing parsing/ft_floodfield rendering/image rendering/rendering))
 
 # Object files convertion
 OBJS := $(SRCS:%.c=%.o)
@@ -29,6 +29,7 @@ all: $(NAME)
 
 $(NAME): $(MLX) $(LIBFT) $(OBJS)
 	@echo "$(GREEN)Building $(NAME).$(RESET)"
+	@$(SO_BANNER)
 	@$(CC) $(OBJS) $(LIBFT) $(LIBFT_FLAGS) $(MLX) $(MLX_FLAGS) -o $(NAME)
 
 $(LIBFT):

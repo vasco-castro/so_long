@@ -6,15 +6,15 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 20:41:02 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/10 21:33:06 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/20 15:01:41 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDERING_H
 # define RENDERING_H
 
-# define PLAYER_TEXTURE "./textures/dino/xpms/dino.xpm"
-# define BACKGROUND_TEXTURE "./textures/dino/xpms/background.xpm"
+# define PLAYER_TEXTURE "./textures/dino/dino.xpm"
+# define BACKGROUND_TEXTURE "./textures/dino/background.xpm"
 
 # define WALL_TEXTURE "./textures/hugo/wall.xpm"
 # define EXIT_TEXTURE "./textures/hugo/exit.xpm"
