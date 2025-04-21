@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:41:02 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/03/06 19:13:35 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/21 20:28:08 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	close_window(void)
 //TODO: CHANGE PROTOTYPE OF ENV/GAME TO MLX OR SOMETHING
 int	key_handler(int keycode)
 {
-	if (keycode == ESC || keycode == CLOSE)
+	if (keycode == ESCAPE || keycode == CLOSE)
 		close_window();
 	else if (keycode == W || keycode == UP)
 		ft_printf("UP\n");

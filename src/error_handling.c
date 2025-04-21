@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handlers.h                                         :+:      :+:    :+:   */
+/*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/16 13:25:15 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/21 20:28:12 by vsoares-         ###   ########.fr       */
+/*   Created: 2025/04/20 18:16:50 by vsoares-          #+#    #+#             */
+/*   Updated: 2025/04/21 21:02:05 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HANDLERS_H
-# define HANDLERS_H
+#include "so_long.h"
 
-# include "../so_long.h"
+void	free_game()
+{
+	if (game())
+	{
+		if (game()->mlx)
+			free(game()->mlx);
+		if (game()->win)
+			free(game()->win);
+		if (game()->map.map)
+			ft_tabdel(game()->map.map, game()->map.size.y -1);
+	}
+}
 
-# define CLOSE 17
-# define ESCAPE 65307
-
-# define UP 65362
-# define DOWN 65364
-# define LEFT 65361
-# define RIGHT 65363
-
-# define W 119
-# define S 115
-# define A 97
-# define D 100
-
-int	close_window(void);
-int	key_handler(int keycode);
-int	mouse_handler(int mousecode, int x, int y);
-
-#endif
+void	exit_so_long(char* error)
+{
+	ft_printf_fd("Exit\n", 2);
+	ft_printf_fd("%s\n", 2, error);
+	free_game();
+	exit(1);
+}
