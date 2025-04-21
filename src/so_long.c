@@ -6,16 +6,20 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:28 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/21 21:01:35 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/21 22:39:16 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static bool is_valid_file(const char *filename, const char *file_extension) {
-    const char *dot = ft_strrchr(filename, file_extension[0]);
-    if (!dot || dot == filename) return false; // No dot or dot is first character
-    return ft_strcmp(dot, file_extension) == 0;
+static bool	is_valid_file(const char *filename, const char *file_extension)
+{
+	const char	*dot;
+
+	dot = ft_strrchr(filename, file_extension[0]);
+	if (!dot || dot == filename)
+		return (false);
+	return (ft_strcmp(dot, file_extension) == 0);
 }
 
 static void	so_long(void)
@@ -45,7 +49,8 @@ int	main(int argc, char *argv[])
 			exit_so_long("Invalid file.\n");
 		if (!parse_map(argv[1]))
 		{
-			ft_printf(UGREEN "%sMap is parsed correctly!\n" RESET);
+			ft_printf(UGREEN "Map is parsed correctly!\n" RESET);
+			ft_printf(BIGREEN "%t" RESET, game()->map.map);
 			so_long();
 		}
 		else

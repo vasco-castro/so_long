@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 19:51:37 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/10 22:22:04 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/21 22:43:41 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,61 +14,35 @@
 
 static bool	ft_positioncheckedorinvalid(char *map[], t_position p)
 {
-	// ft_printf("CHECKING POSITION: %d.%d -> %c\n", p.x, p.y, map[p.y][p.x]);
 	return (p.x < 0 || p.y < 0
 		|| p.x >= game()->map.size.x || p.y >= game()->map.size.y
 		|| map[p.y][p.x] == WALL || map[p.y][p.x] == 'F'
 	);
 }
 
-static bool	fill(char *map[], t_position p)
-{
-	t_position	temp_p;
-
 	/* Check if it's surrounded by walls before flood_field */
-	/* TODO: Floodfill until the amount of Collectibles is flooded and exit too */
-	if (map[p.y][p.x] == EXIT)
-		return (1);
-	map[p.y][p.x] = 'F';
-	temp_p.x = p.x;
-	temp_p.y = p.y - 1;
-	if (!ft_positioncheckedorinvalid(map, temp_p))
-		if (fill(map, temp_p))
-			return (1);
-	temp_p.y = p.y + 1;
-	if (!ft_positioncheckedorinvalid(map, temp_p))
-		if (fill(map, temp_p))
-			return (1);
-	temp_p.y = p.y;
-	temp_p.x = p.x - 1;
-	if (!ft_positioncheckedorinvalid(map, temp_p))
-		if (fill(map, temp_p))
-			return (1);
-	temp_p.x = p.x + 1;
-	if (!ft_positioncheckedorinvalid(map, temp_p))
-		if (fill(map, temp_p))
-			return (1);
-	return (0);
-}
-
-bool	flood_fill(void)
+	/* TODO: Floodfill until the amount of
+	 Collectibles is flooded and exit too */
+bool	flood_fill(char *map[], t_position p)
 {
-	char	**tmp_map;
+	char	c;
 
-	// ft_printf("STARTING FLOOD FILL\n");
-	// tmp_map = ft_calloc(50, 50);
-	// if(!tmp_map)
-	// 	exit(1);
-	tmp_map = game()->map.map;
-	// while (game()->map.map)
-	// {
-	// 	/* code */
-	// }
-
-	// ft_printtab(game()->map.map);
-	bool bol = fill(tmp_map, game()->map.player.position);
-	// ft_printtab(tmp_map);
-	ft_printtab(game()->map.map);
-	// free(tmp_map);
-	return (bol);
+	c = map[p.y][p.x];
+	if (map[p.y][p.x] == EXIT)
+		return (0);
+	map[p.y][p.x] = 'F';
+	if (!ft_positioncheckedorinvalid(map, (t_position){p.x, p.y - 1}))
+		if (flood_fill(map, (t_position){p.x, p.y - 1}))
+			return (1);
+	if (!ft_positioncheckedorinvalid(map, (t_position){p.x, p.y + 1}))
+		if (flood_fill(map, (t_position){p.x, p.y + 1}))
+			return (1);
+	if (!ft_positioncheckedorinvalid(map, (t_position){p.x - 1, p.y}))
+		if (flood_fill(map, (t_position){p.x - 1, p.y}))
+			return (1);
+	if (!ft_positioncheckedorinvalid(map, (t_position){p.x + 1, p.y}))
+		if (flood_fill(map, (t_position){p.x + 1, p.y}))
+			return (1);
+	map[p.y][p.x] = c;
+	return (0);
 }

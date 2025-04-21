@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:06 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/21 20:28:52 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/21 22:50:59 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_player
 typedef struct s_enemy
 {
 	t_position	position;
-	bool		alive; //TODO: make a way to kill enemies
+	bool		alive;
 }	t_enemy;
 
 typedef struct s_collectible
@@ -72,7 +72,7 @@ typedef struct s_game
 
 t_game	*game(void);
 
-void	free_game();
-void	exit_so_long(char* error);
+void	free_game(void);
+void	exit_so_long(char *error);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 13:03:32 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/20 15:47:35 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/21 22:36:50 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	render(void)
 		x = game()->map.size.x - 1;
 		while (x >= 0)
 		{
-			ft_printf("PARSING: %c\n", game()->map.map[y][x]);
 			if (game()->map.map[y][x] == WALL)
 				draw_walls((t_position){x, y});
 			else if (game()->map.map[y][x] == BACKGROUND)

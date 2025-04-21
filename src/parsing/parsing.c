@@ -6,14 +6,14 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:05:40 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/20 15:19:14 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/21 22:51:55 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
 /* TODO: this function will:
- count collectibles, player, exit, and map size (both line lenght and height)
+ count collectibles, player, exit, and map size (x & y)
  insert all thoes values into the struct
  and give an error in case of it;
  */
@@ -41,7 +41,6 @@ static bool	check_line(char *line)
 	else if (((game()->map.size.y != 0) && (game()->map.size.x != x)) || x < 3)
 		exit(EXIT_FAILURE);
 	game()->map.map[game()->map.size.y] = line;
-	ft_printf("MALLOC DEBUGGING: %s\n", game()->map.map[game()->map.size.y]);
 	return (EXIT_SUCCESS);
 }
 
@@ -68,6 +67,14 @@ static char	*get_map_line(int fd)
 	return (clean_line);
 }
 
+/* char	**read_map_recursive(int fd, int *count)
+{
+
+} */
+
+/* TODO: Still need to properly allocate the map
+	Suggestion to do it recursevily;
+	And need to separate this into more functions */
 bool	parse_map(char *map_path)
 {
 	int		fd;
@@ -75,12 +82,12 @@ bool	parse_map(char *map_path)
 
 	fd = open(map_path, O_RDONLY);
 	if (fd < 1)
-	{
-		exit(1); // TODO: launch MAP-ERROR;
-	}
+		exit_so_long("Invalid file.\n");
 	game()->map.size.y = 0;
-	/*TODO: find how many lines to alloc the right ammount */
-	game()->map.map = ft_calloc(600, sizeof(char **));
+	game()->map.map = malloc(200 * sizeof(char *));
+	if (!game()->map.map)
+		exit_so_long("Allocation went wrong!\n");
+	// game()->map.map = ft_calloc(200, sizeof(char *));
 	while (game()->map.size.y == 0 || line)
 	{
 		line = get_map_line(fd);
@@ -92,10 +99,11 @@ bool	parse_map(char *map_path)
 				game()->map.size.y++;
 		}
 		else
-			ft_printf("BRUH!\n"); //TODO: Handle this! And save last line, if not the map does not have a NULL at the end!!
+			ft_printf("BRUH!\n");
+		//TODO: Handle this! And save last line, if not the map does not have a NULL at the end!!
 		if (game()->map.size.x < 3)
-			exit(1); // TODO: FREE THE OTHER ALLOCATED LINES and the map array; & launch MAP-ERROR;
+			exit_so_long("Map is too small!\n");
 	}
 	close(fd);
-	return (flood_fill());
+	return (flood_fill(game()->map.map, game()->map.player.position));
 }
