@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 13:03:32 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/21 22:36:50 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/21 22:59:21 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	render(void)
 	int			x;
 	int			y;
 
+	ft_printf(BIBLUE "%t" RESET, game()->map.map);
 	y = game()->map.size.y - 1;
 	while (y >= 0)
 	{

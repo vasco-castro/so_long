@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 20:41:02 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/20 15:47:08 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/21 22:54:27 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,17 @@ typedef struct s_position
 	int		x;
 	int		y;
 }	t_position;
+
+typedef struct s_image
+{
+	void	*image;
+	char	*address;
+	int		width;
+	int		height;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+}		t_image;
 
 void	draw_background(t_position position);
 void	draw_collects(t_position position);

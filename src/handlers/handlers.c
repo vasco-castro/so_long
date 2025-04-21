@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:41:02 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/21 20:28:08 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/21 23:03:50 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ int	key_handler(int keycode)
 	if (keycode == ESCAPE || keycode == CLOSE)
 		close_window();
 	else if (keycode == W || keycode == UP)
-		ft_printf("UP\n");
+		move_up();
 	else if (keycode == A || keycode == LEFT)
-		ft_printf("LEFT\n");
+		move_left();
 	else if (keycode == S || keycode == DOWN)
-		ft_printf("DOWN\n");
+		move_down();
 	else if (keycode == D || keycode == RIGHT)
-		ft_printf("RIGHT\n");
+		move_right();
 	else
 		ft_printf("KEY: \033[31m%d\033[0m\n", keycode);
 	return (EXIT_SUCCESS);

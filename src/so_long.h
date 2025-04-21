@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:06 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/21 22:50:59 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/21 22:54:34 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,6 @@
 
 # define WINDOW_HEIGHT 720
 # define WINDOW_WIDTH 1280
-
-typedef struct s_image
-{
-	void	*image;
-	char	*address;
-	int		width;
-	int		height;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-}		t_image;
 
 typedef struct s_player
 {
