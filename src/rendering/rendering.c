@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 13:03:32 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/21 22:59:21 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:43:20 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ void	render(void)
 		while (x >= 0)
 		{
 			if (game()->map.map[y][x] == WALL)
-				draw_walls((t_position){x, y});
+				ft_put_image(WALL_TEXTURE, (t_point){x, y});
 			else if (game()->map.map[y][x] == BACKGROUND)
-				draw_background((t_position){x, y});
+				ft_put_image(BACKGROUND_TEXTURE, (t_point){x, y});
 			else if (game()->map.map[y][x] == COLLECTIBLE)
-				draw_collects((t_position){x, y});
+				ft_put_image(COLLECTIBLE_TEXTURE, (t_point){x, y});
 			else if (game()->map.map[y][x] == PLAYER)
-				draw_player((t_position){x, y});
+				ft_put_image(PLAYER_TEXTURE, (t_point){x, y});
 			else if (game()->map.map[y][x] == EXIT)
-				draw_exit((t_position){x, y});
+				ft_put_image(EXIT_TEXTURE, (t_point){x, y});
 			x--;
 		}
 		y--;

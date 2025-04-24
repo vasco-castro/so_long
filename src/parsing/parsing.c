@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:05:40 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/21 22:51:55 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:49:21 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  */
 static bool	check_line(char *line)
 {
-	int	x;
+	size_t	x;
 
 	x = 0;
 	while (line[x])
@@ -31,8 +31,8 @@ static bool	check_line(char *line)
 		}
 		if (line[x] == EXIT)
 		{
-			game()->map.exit.y = game()->map.size.y;
-			game()->map.exit.x = x;
+			game()->map.exit.position.y = game()->map.size.y;
+			game()->map.exit.position.x = x;
 		}
 		x++;
 	}

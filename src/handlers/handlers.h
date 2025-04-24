@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 13:25:15 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/21 23:39:49 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:43:43 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,9 @@ void	move_up(void);
 void	move_left(void);
 void	move_down(void);
 void	move_right(void);
+
+bool	ft_ismovevalid(t_point p);
+void    collect(t_point p);
+void    exit_game(t_point p);
 
 #endif

@@ -6,101 +6,77 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 23:00:13 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/21 23:39:11 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:50:50 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "handlers.h"
+#include "../so_long.h"
 
-static bool	ft_ismovevalid(t_position p)
+void	move(t_point np)
 {
-	ft_printf("CHECKING P:%d-%d = %c\n", p.x, p.y, game()->map.map[p.y][p.x]);
-	return (p.x < 0 || p.y < 0
-		|| p.x >= game()->map.size.x || p.y >= game()->map.size.y
-		|| game()->map.map[p.y][p.x] == WALL
-	);
-}
+	t_point	op;
 
-void	move_up(void)
-{
-	t_position	p;
-	t_position	n;
-
-	p.x = game()->map.player.position.x;
-	p.y = game()->map.player.position.y;
-	n = p;
-	n.y--;
-	ft_printf("Trying to move UP from %d-%d to %d-%d\n", p.x, p.y, n.x, n.y);
-	if (!ft_ismovevalid(n))
+	op = game()->map.player.position;
+	if (!ft_ismovevalid(np))
 	{
-		game()->map.map[p.y][p.x] = '0';
-		game()->map.map[n.y][n.x] = 'P';
-		game()->map.player.position = n;
+		collect(np);
+		exit_game(np);
+		game()->map.map[op.y][op.x] = BACKGROUND;
+		game()->map.map[np.y][np.x] = PLAYER;
+		game()->map.player.position = np;
 		render();
 	}
 	else
 		ft_printf(BRED "Invalid move!\n" RESET);
 }
 
+void	move_up(void)
+{
+	t_point	p;
+	t_point	n;
+
+	p = game()->map.player.position;
+	n = p;
+	n.y--;
+	ft_printf("Trying to move UP from %d-%d to %d-%d\n", p.x, p.y, n.x, n.y);
+	move(n);
+}
+
 void	move_left(void)
 {
-	t_position	p;
-	t_position	n;
+	t_point	p;
+	t_point	n;
 
 	p.x = game()->map.player.position.x;
 	p.y = game()->map.player.position.y;
 	n = p;
 	n.x--;
 	ft_printf("Trying to move LEFT from %d-%d to %d-%d\n", p.x, p.y, n.x, n.y);
-	if (!ft_ismovevalid(n))
-	{
-		game()->map.map[p.y][p.x] = '0';
-		game()->map.map[n.y][n.x] = 'P';
-		game()->map.player.position = n;
-		render();
-	}
-	else
-		ft_printf(BRED "Invalid move!\n" RESET);
+	move(n);
 }
 
 void	move_down(void)
 {
-	t_position	p;
-	t_position	n;
+	t_point	p;
+	t_point	n;
 
 	p.x = game()->map.player.position.x;
 	p.y = game()->map.player.position.y;
 	n = p;
 	n.y++;
 	ft_printf("Trying to move DOWN from %d-%d to %d-%d\n", p.x, p.y, n.x, n.y);
-	if (!ft_ismovevalid(n))
-	{
-		game()->map.map[p.y][p.x] = '0';
-		game()->map.map[n.y][n.x] = 'P';
-		game()->map.player.position = n;
-		render();
-	}
-	else
-		ft_printf(BRED "Invalid move!\n" RESET);
+	move(n);
 }
 
 void	move_right(void)
 {
-	t_position	p;
-	t_position	n;
+	t_point	p;
+	t_point	n;
 
 	p.x = game()->map.player.position.x;
 	p.y = game()->map.player.position.y;
 	n = p;
 	n.x++;
 	ft_printf("Trying to move RIGHT from %d-%d to %d-%d\n", p.x, p.y, n.x, n.y);
-	if (!ft_ismovevalid(n))
-	{
-		game()->map.map[p.y][p.x] = '0';
-		game()->map.map[n.y][n.x] = 'P';
-		game()->map.player.position = n;
-		render();
-	}
-	else
-		ft_printf(BRED "Invalid move!\n" RESET);
+	move(n);
 }

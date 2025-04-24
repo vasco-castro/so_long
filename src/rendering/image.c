@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 21:00:07 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/10 21:36:26 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:40:30 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void extract_sprite(void *src_img, void *dst_img,
 	}
 }
 
-void	ft_put_sprite(char *texture, int x, int y, int frame_index)
+void	ft_put_sprite(char *texture, t_point p, int frame_index)
 {
 	t_image src,sprite;
 
@@ -73,10 +73,10 @@ void	ft_put_sprite(char *texture, int x, int y, int frame_index)
 	if(!upscaled.image) exit(2);
 	upscale_image(src.image, upscaled.image, src.height, src.height, TEXTURE_SIZE, TEXTURE_SIZE);
 
-	mlx_put_image_to_window(game()->mlx, game()->win, upscaled.image, TEXTURE_SIZE * x, TEXTURE_SIZE * y);
+	mlx_put_image_to_window(game()->mlx, game()->win, upscaled.image, TEXTURE_SIZE * p.x, TEXTURE_SIZE * p.y);
 }
 
-void	ft_put_image(char *texture, int x, int y)
+void	ft_put_image(char *texture, t_point p)
 {
 	t_image src;
 
@@ -90,5 +90,5 @@ void	ft_put_image(char *texture, int x, int y)
 	upscale_image(src.image, upscaled.image, src.height, src.height, TEXTURE_SIZE, TEXTURE_SIZE);
 	// TODO: PROPERLY DESTROY AND FREE IMAGES IN GENERAL
 
-	mlx_put_image_to_window(game()->mlx, game()->win, upscaled.image, TEXTURE_SIZE * x, TEXTURE_SIZE * y);
+	mlx_put_image_to_window(game()->mlx, game()->win, upscaled.image, TEXTURE_SIZE * p.x, TEXTURE_SIZE * p.y);
 }

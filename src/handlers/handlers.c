@@ -6,11 +6,11 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:41:02 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/21 23:03:50 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:26:24 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "handlers.h"
+#include "../so_long.h"
 
 int	close_window(void)
 {
