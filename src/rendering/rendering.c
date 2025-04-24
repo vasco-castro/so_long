@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 13:03:32 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/24 14:43:20 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:23:30 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	render(void)
 				ft_put_image(BACKGROUND_TEXTURE, (t_point){x, y});
 			else if (game()->map.map[y][x] == COLLECTIBLE)
 				ft_put_image(COLLECTIBLE_TEXTURE, (t_point){x, y});
-			else if (game()->map.map[y][x] == PLAYER)
+			else if (game()->map.map[y][x] == PLAYER || game()->map.map[y][x] == 'F')
 				ft_put_image(PLAYER_TEXTURE, (t_point){x, y});
 			else if (game()->map.map[y][x] == EXIT)
 				ft_put_image(EXIT_TEXTURE, (t_point){x, y});

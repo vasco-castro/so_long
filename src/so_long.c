@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:28 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/21 22:39:16 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/24 19:22:38 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int argc, char *argv[])
 	{
 		if (!is_valid_file(argv[1], ".ber"))
 			exit_so_long("Invalid file.\n");
-		if (!parse_map(argv[1]))
+		if (get_map(argv[1]))
 		{
 			ft_printf(UGREEN "Map is parsed correctly!\n" RESET);
 			ft_printf(BIGREEN "%t" RESET, game()->map.map);

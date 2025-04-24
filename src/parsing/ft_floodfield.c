@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 19:51:37 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/24 14:49:34 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:23:48 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static bool	ft_pointcheckedorinvalid(char *map[], t_point p)
 {
-	return (p.x >= game()->map.size.x || p.y >= game()->map.size.y
+	return ( p.x < 0 || p.y < 0 ||
+		p.x >= game()->map.size.x || p.y >= game()->map.size.y
 		|| map[p.y][p.x] == WALL || map[p.y][p.x] == 'F'
 	);
 }
@@ -26,6 +27,7 @@ bool	flood_fill(char *map[], t_point p)
 {
 	char	c;
 
+	render();
 	c = map[p.y][p.x];
 	if (map[p.y][p.x] == EXIT)
 		return (0);

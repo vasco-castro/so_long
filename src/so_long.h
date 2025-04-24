@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:06 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/24 14:46:43 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/24 19:15:18 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,25 @@
 typedef struct s_player
 {
 	t_point	position;
-	int			moves;
-	int			collectibles;
+	size_t	moves;
+	size_t	collectibles;
 }	t_player;
 
 typedef struct s_entity
 {
 	t_point	position;
-	bool		active;
+	bool	active;
 }	t_entity;
 
 typedef struct s_map
 {
+	char		*path;
 	char		**map;
-	t_point	size;
+	t_point		size;
 
 	t_player	player;
 	t_entity	exit;
-	// t_entity		*enemies;
-	// t_entity	*collectibles;
+	size_t		collectibles;
 }	t_map;
 
 typedef struct s_game

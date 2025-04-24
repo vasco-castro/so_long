@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:05:40 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/24 14:49:21 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/24 19:25:34 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,33 @@ static bool	check_line(char *line)
 	return (EXIT_SUCCESS);
 }
 
+void	parse_check(void)
+{
+	size_t	x;
+	size_t	y;
+
+	y = 0;
+	while (game()->map.map[y])
+	{
+		ft_printf("%d - %d", game()->map.size.x, ft_strlen(game()->map.map[y]));
+		if (game()->map.size.x != ft_strlen(game()->map.map[y]))
+			exit_so_long("Map size is incompatibly!");
+		x = 0;
+		while (game()->map.map[y][x])
+		{
+			if (game()->map.map[y][x] == PLAYER)
+				game()->map.player.position = (t_point) {x, y};
+			if (game()->map.map[y][x] == EXIT)
+				game()->map.exit.position = (t_point) {x, y};
+			if (game()->map.map[y][x] == COLLECTIBLE)
+				game()->map.collectibles++;
+			x++;
+		}
+		y++;
+	}
+
+}
+
 static char	*get_map_line(int fd)
 {
 	int		i;
@@ -67,10 +94,46 @@ static char	*get_map_line(int fd)
 	return (clean_line);
 }
 
-/* char	**read_map_recursive(int fd, int *count)
+char	**read_map(int fd, size_t i)
 {
+	char	*line;
+	char	**result;
 
-} */
+	line = get_map_line(fd);
+	if (i ==0)
+		game()->map.size.x = ft_strlen(line);
+	if (!line && i == 0)
+		return (NULL);
+	else if (!line && i != 0)
+	{
+		game()->map.size.y = i;
+		return (ft_calloc(sizeof(char *), (i + 1)));
+	}
+	result = read_map(fd, i + 1);
+	result[i] = line;
+	return (result);
+}
+
+bool	get_map(char *map_path)
+{
+	int		fd;
+
+	fd = open(map_path, O_RDONLY);
+	if (fd < 1)
+	{
+		close(fd);
+		exit_so_long("Invalid file.\n");
+	}
+	game()->map.map = read_map(fd, game()->map.size.y);
+	close(fd);
+	if (!game()->map.map)
+		exit_so_long("Allocation went wrong!\n");
+	ft_printf("MAP RECURSIVLY of size %d-%d:\n%t\n",
+		game()->map.size.x, game()->map.size.y, game()->map.map);
+
+	parse_check();
+	return (true);
+}
 
 /* TODO: Still need to properly allocate the map
 	Suggestion to do it recursevily;
@@ -87,7 +150,6 @@ bool	parse_map(char *map_path)
 	game()->map.map = malloc(200 * sizeof(char *));
 	if (!game()->map.map)
 		exit_so_long("Allocation went wrong!\n");
-	// game()->map.map = ft_calloc(200, sizeof(char *));
 	while (game()->map.size.y == 0 || line)
 	{
 		line = get_map_line(fd);

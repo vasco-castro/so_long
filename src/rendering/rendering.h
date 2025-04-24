@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 20:41:02 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/24 14:44:45 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/04/24 16:12:07 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # define WALL_TEXTURE "./textures/hugo/wall.xpm"
 # define EXIT_TEXTURE "./textures/hugo/exit.xpm"
-# define COLLECTIBLE_TEXTURE "./textures/hugo/collectible.xpm"
+# define COLLECTIBLE_TEXTURE "./textures/pineapple.xpm"
 
 # define TEXTURE_SIZE 64
 
