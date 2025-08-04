@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 19:51:37 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/24 18:23:48 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/08/04 19:12:14 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 
 static bool	ft_pointcheckedorinvalid(char *map[], t_point p)
 {
-	return ( p.x < 0 || p.y < 0 ||
+	return (
+		// p.x < 0 || p.y < 0 ||
 		p.x >= game()->map.size.x || p.y >= game()->map.size.y
 		|| map[p.y][p.x] == WALL || map[p.y][p.x] == 'F'
 	);
 }
 
-	/* Check if it's surrounded by walls before flood_field */
-	/* TODO: Floodfill until the amount of
-	 Collectibles is flooded and exit too */
+/* Check if it's surrounded by walls before flood_field */
+/* TODO: Floodfill until the amount of
+	Collectibles is flooded and exit too */
+/* TODO: Make a DEBUG version of the flood-field with debug comments and rendering */
 bool	flood_fill(char *map[], t_point p)
 {
 	char	c;
 
-	render();
+	// render();
 	c = map[p.y][p.x];
 	if (map[p.y][p.x] == EXIT)
 		return (0);
