@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 13:03:32 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/24 18:23:30 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/08/04 19:43:12 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	render(void)
 		x = game()->map.size.x - 1;
 		while (x >= 0)
 		{
-			if (game()->map.map[y][x] == WALL)
+			if (game()->map.map[y][x] == 'F')
+				ft_put_image(F_TEXTURE, (t_point){x, y});
+			else if (game()->map.map[y][x] == WALL)
 				ft_put_image(WALL_TEXTURE, (t_point){x, y});
 			else if (game()->map.map[y][x] == BACKGROUND)
 				ft_put_image(BACKGROUND_TEXTURE, (t_point){x, y});

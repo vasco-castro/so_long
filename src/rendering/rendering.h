@@ -6,13 +6,14 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 20:41:02 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/24 16:12:07 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/08/04 19:43:31 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDERING_H
 # define RENDERING_H
 
+# define F_TEXTURE "./textures/hugo/collectible.xpm"
 # define PLAYER_TEXTURE "./textures/dino/dino.xpm"
 # define BACKGROUND_TEXTURE "./textures/dino/background.xpm"
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_floodfield.c                                    :+:      :+:    :+:   */
+/*   ft_floodfill.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 19:51:37 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/08/04 19:12:14 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/08/04 19:54:15 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ static bool	ft_pointcheckedorinvalid(char *map[], t_point p)
 	);
 }
 
-/* Check if it's surrounded by walls before flood_field */
+/* Check if it's surrounded by walls before flood_fill */
 /* TODO: Floodfill until the amount of
 	Collectibles is flooded and exit too */
-/* TODO: Make a DEBUG version of the flood-field with debug comments and rendering */
+/* TODO: Make a DEBUG version of the flood-fill with debug comments and rendering */
 bool	flood_fill(char *map[], t_point p)
 {
 	char	c;

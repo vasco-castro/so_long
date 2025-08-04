@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 18:16:50 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/24 14:15:00 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/08/04 20:15:38 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,14 @@ void	free_game(void)
 
 void	exit_so_long(char *error)
 {
-	ft_printf_fd("Exit\n", 2);
-	ft_printf_fd("%s\n", 2, error);
+	ft_printf_fd(RED "Error\n%s\n" RESET, 2, error);
 	free_game();
-	exit(EXIT_SUCCESS);
+	exit(EXIT_FAILURE);
 }
 
 void	exit_successfully(void)
 {
-	ft_printf("Congratulations, you finish the game :)\n");
+	ft_printf(BIGREEN "Congratulations, you finish the game :)\n" RESET);
 	free_game();
-	exit(EXIT_SUCCESS);	
+	exit(EXIT_SUCCESS);
 }
