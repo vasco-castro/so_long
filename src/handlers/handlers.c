@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:41:02 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/24 14:26:24 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/08/08 21:18:55 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	close_window(void)
 		mlx_destroy_window(game()->mlx, game()->win);
 	if (game()->mlx != NULL)
 	{
-		mlx_destroy_display(game()->mlx);
+		// mlx_destroy_display(game()->mlx);
 		free(game()->mlx);
 	}
 	exit(0);
