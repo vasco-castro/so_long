@@ -29,10 +29,12 @@ LIBFT_FLAGS = -L$(LIBFT_DIR)/inc
 #Run git commands for the submodule before running anything else
 $(LIBFT):
 	@echo "$(GREEN)Building LIBFT.$(RESET)"
+	@git submodule update --init
 	@make -s -C $(LIBFT_DIR)
 
 #Check if both flags (-s -C) can be together
 #Run git commands for the submodule before running anything else
 $(MLX):
 	@echo "$(GREEN)Building MLX.$(RESET)"
+	@git submodule update --init
 	@make -s -C $(MLX_DIR)
