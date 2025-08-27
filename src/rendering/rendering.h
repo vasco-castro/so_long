@@ -13,13 +13,13 @@
 #ifndef RENDERING_H
 # define RENDERING_H
 
-# define F_TEXTURE "./textures/hugo/collectible.xpm"
-# define PLAYER_TEXTURE "./textures/dino/dino.xpm"
-# define BACKGROUND_TEXTURE "./textures/dino/background.xpm"
+# define F_TEXTURE "./assets/textures/hugo/collectible.xpm"
+# define PLAYER_TEXTURE "./assets/textures/dino/dino.xpm"
+# define BACKGROUND_TEXTURE "./assets/textures/dino/background.xpm"
 
-# define WALL_TEXTURE "./textures/hugo/wall.xpm"
-# define EXIT_TEXTURE "./textures/hugo/exit.xpm"
-# define COLLECTIBLE_TEXTURE "./textures/pineapple.xpm"
+# define WALL_TEXTURE "./assets/textures/hugo/wall.xpm"
+# define EXIT_TEXTURE "./assets/textures/hugo/exit.xpm"
+# define COLLECTIBLE_TEXTURE "./assets/textures/pineapple.xpm"
 
 # define TEXTURE_SIZE 64
 

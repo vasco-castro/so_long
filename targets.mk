@@ -1,7 +1,6 @@
 # Directories
 SRCS_DIR = ./src
-INCLUDES_DIR = ./inc
-MAPS_DIR = ./maps
+LIB_DIR = ./lib
 
 # Source files (with directories applied)
 SRCS = $(addsuffix .c, \
@@ -17,11 +16,11 @@ SRCS = $(addsuffix .c, \
 OBJS := $(SRCS:%.c=%.o)
 
 #Libraries and it's directories
-MLX_DIR	= $(INCLUDES_DIR)/minilibx-linux
+MLX_DIR	= $(LIB_DIR)/minilibx-linux
 MLX = $(MLX_DIR)/libmlx.a
 MLX_FLAGS = -L. -lXext -L. -lX11
 
-LIBFT_DIR = $(INCLUDES_DIR)/libft
+LIBFT_DIR = $(LIB_DIR)/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 LIBFT_FLAGS = -L$(LIBFT_DIR)/inc
 

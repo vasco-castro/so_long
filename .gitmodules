@@ -1,6 +1,6 @@
-[submodule "inc/libft"]
-	path = inc/libft
+[submodule "lib/minilibx-linux"]
+	path = lib/minilibx-linux
+	url = git@github.com:vasco-castro/minilibx-linux.git
+[submodule "lib/libft"]
+	path = lib/libft
 	url = git@github.com:vasco-castro/libV.git
-[submodule "inc/minilibx-linux"]
-	path = inc/minilibx-linux
-	url = git@github.com:42paris/minilibx-linux.git
