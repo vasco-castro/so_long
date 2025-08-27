@@ -19,8 +19,24 @@
 # include "rendering/rendering.h"
 # include "parsing/parsing.h"
 
-# define WINDOW_HEIGHT 720
-# define WINDOW_WIDTH 1280
+// # define WIN_360P
+# define WIN_720P
+//# define WIN_1080P
+
+# ifdef WIN_360P
+#  define WIN_W 640
+#  define WIN_H 360
+# endif
+
+# ifdef WIN_720P
+#  define WIN_W 1280
+#  define WIN_H 720
+# endif
+
+# ifdef WIN_1080P
+#  define WIN_W 1920
+#  define WIN_H 1080
+# endif
 
 typedef struct s_player
 {

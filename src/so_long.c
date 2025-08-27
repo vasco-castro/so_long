@@ -27,7 +27,7 @@ static void	so_long(void)
 	game()->mlx = mlx_init();
 	if (!game()->mlx)
 		exit_so_long(URED "MLX error!" RESET);
-	game()->win = mlx_new_window(game()->mlx, WINDOW_WIDTH, WINDOW_HEIGHT,
+	game()->win = mlx_new_window(game()->mlx, WIN_W, WIN_H,
 		"You are going to have a fun ride ;)");
 	if (!game()->win)
 		exit_so_long(URED "MLX error!" RESET);
