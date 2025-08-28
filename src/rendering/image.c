@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../include/so_long.h"
 
 // source image is 24x24
 static void upscale_image(void *src, void *dst, int src_w, int src_h, int dst_w, int dst_h)

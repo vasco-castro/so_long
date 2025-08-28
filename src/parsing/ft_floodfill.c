@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../include/so_long.h"
 
 static bool	ft_pointcheckedorinvalid(char *map[], t_point p)
 {

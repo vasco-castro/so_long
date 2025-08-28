@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../include/so_long.h"
 
 bool	ft_ismovevalid(t_point p)
 {
@@ -26,7 +26,7 @@ void    collect(t_point p)
     {
         ft_printf(CYAN "Got collectible in position: %d-%d\n" RESET, p.x, p.y);
         game()->map.player.collectibles++;
-        ft_printf(CYAN "Total collectibles is: %d\n" RESET, 
+        ft_printf(CYAN "Total collectibles is: %d\n" RESET,
             game()->map.player.collectibles);
     }
 }

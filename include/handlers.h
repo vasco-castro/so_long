@@ -13,7 +13,7 @@
 #ifndef HANDLERS_H
 # define HANDLERS_H
 
-# include "../so_long.h"
+# include "../../include/so_long.h"
 
 # define CLOSE 17
 # define ESCAPE 65307

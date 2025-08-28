@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../include/so_long.h"
 
 /* Checks if the map is valid and saves position and counters of map metadata.
 TODO: Still need to validate all walls (considering to do it in floodfill yet!) */

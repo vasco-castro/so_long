@@ -4,3 +4,6 @@
 [submodule "lib/libft"]
 	path = lib/libft
 	url = git@github.com:vasco-castro/libV.git
+[submodule "lib/minilibx-opengl"]
+	path = lib/minilibx-opengl
+	url = git@github.com:vasco-castro/minilibx-opengl.git

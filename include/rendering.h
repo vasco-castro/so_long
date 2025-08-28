@@ -29,7 +29,7 @@ typedef struct s_image
 	char	*address;
 	int		width;
 	int		height;
-	int		bits_per_pixel;
+	int bpp; // bits per pixel
 	int		size_line;
 	int		endian;
 }		t_image;
