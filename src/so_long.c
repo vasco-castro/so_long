@@ -12,16 +12,6 @@
 
 #include "../include/so_long.h"
 
-static bool	is_valid_file(const char *filename, const char *file_extension)
-{
-	const char	*dot;
-
-	dot = ft_strrchr(filename, file_extension[0]);
-	if (!dot || dot == filename)
-		return (false);
-	return (ft_strcmp(dot, file_extension) == 0);
-}
-
 static void	so_long(void)
 {
 	game()->mlx = mlx_init();
@@ -34,7 +24,7 @@ static void	so_long(void)
 	render();
 	mlx_hook(game()->win, 4, 0, mouse_handler, &game);
 	mlx_hook(game()->win, 2, 1, key_handler, &game);
-	mlx_hook(game()->win, 17, 1, close_window, &game);
+	mlx_hook(game()->win, 17, 1, close_window, &game); //TODO: Remove, might be activated by key handler 17!!!
 	mlx_loop(game()->mlx);
 }
 
@@ -45,7 +35,7 @@ int	main(int argc, char *argv[])
 		exit_so_long(RED "You didn't pass the map as an argument." RESET);
 	else if (argc == 2)
 	{
-		if (!is_valid_file(argv[1], ".ber"))
+		if (!ft_isfile(argv[1], ".ber"))
 			exit_so_long("Invalid file.\n");
 		if (get_map(argv[1]))
 		{
@@ -61,6 +51,9 @@ int	main(int argc, char *argv[])
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * @brief Singleton with all main game structure information!
+ */
 t_game	*game(void)
 {
 	static t_game	data;

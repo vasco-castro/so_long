@@ -29,7 +29,7 @@ bool	flood_fill(char *map[], t_point p)
 {
 	char	c;
 
-	// render();
+	// render(); //Only here to serve as debug for flood fill to actually view whats flooding
 	c = map[p.y][p.x];
 	if (map[p.y][p.x] == EXIT)
 		return (0);

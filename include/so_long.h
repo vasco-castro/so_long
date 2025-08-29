@@ -16,9 +16,9 @@
 # include "../lib/minilibx-linux/mlx.h"
 # include "../lib/libft/include/libft.h"
 
-# include "handlers/handlers.h"
-# include "rendering/rendering.h"
-# include "parsing/parsing.h"
+# include "handlers.h"
+# include "rendering.h"
+# include "parsing.h"
 
 // # define WIN_360P
 # define WIN_720P
@@ -46,15 +46,21 @@ typedef struct s_player
 	size_t	collectibles;
 }	t_player;
 
+/* Consider remove, but might use later! */
 typedef struct s_entity
 {
 	t_point	position;
 	bool	active;
 }	t_entity;
 
+/**
+ * @brief Represents the game map structure.
+ * This structure is used to define positions and sizes in the game.
+ * TODO: Move player to t_game, and remove exit entirely since is not
+ *  overwriten in the map anymore.
+ */
 typedef struct s_map
 {
-	char		*path;
 	char		**map;
 	t_point		size;
 
@@ -63,6 +69,11 @@ typedef struct s_map
 	size_t		collectibles;
 }	t_map;
 
+/**
+ * @brief This structure holds the main game data, including the map,
+ *  player state, and other entities.
+ * TODO: Change this to t_solong and change t_map to t_game.
+ */
 typedef struct s_game
 {
 	void	*mlx;
@@ -74,6 +85,6 @@ t_game	*game(void);
 
 void	free_game(void);
 void	exit_so_long(char *error);
-void	exit_successfully(void);
+void	exit_successfully(char *sucess);
 
 #endif

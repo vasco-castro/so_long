@@ -13,20 +13,29 @@
 #ifndef HANDLERS_H
 # define HANDLERS_H
 
-# include "../../include/so_long.h"
+# define CLOSE_KEY 17
+# define ESCAPE_KEY 65307
+# define ESCAPE_KEY_DARWIN 53
 
-# define CLOSE 17
-# define ESCAPE 65307
+# define UP_KEY 65362
+# define DOWN_KEY 65364
+# define LEFT_KEY 65361
+# define RIGHT_KEY 65363
 
-# define UP 65362
-# define DOWN 65364
-# define LEFT 65361
-# define RIGHT 65363
+# define W_KEY 119
+# define S_KEY 115
+# define A_KEY 97
+# define D_KEY 100
 
-# define W 119
-# define S 115
-# define A 97
-# define D 100
+# define UP_KEY_DARWIN 126
+# define DOWN_KEY_DARWIN 125
+# define LEFT_KEY_DARWIN 123
+# define RIGHT_KEY_DARWIN 124
+
+# define W_KEY_DARWIN 13
+# define S_KEY_DARWIN 1
+# define A_KEY_DARWIN 0
+# define D_KEY_DARWIN 2
 
 int		close_window(void);
 int		key_handler(int keycode);
@@ -37,8 +46,6 @@ void	move_left(void);
 void	move_down(void);
 void	move_right(void);
 
-bool	ft_ismovevalid(t_point p);
-void    collect(t_point p);
-void    exit_game(t_point p);
+void	move(t_point new_position);
 
 #endif

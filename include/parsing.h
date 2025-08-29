@@ -20,12 +20,8 @@
 # define ENEMY 'X'
 # define EXIT 'E'
 
-bool	flood_fill(char *map[], t_point p);
-bool	parse_map(char *map_path);
-
-
-void	parse_check(void);
-char	**read_map(int fd, size_t i);
 bool	get_map(char *map_path);
+
+bool	flood_fill(char *map[], t_point p);
 
 #endif

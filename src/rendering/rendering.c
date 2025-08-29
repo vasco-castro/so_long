@@ -12,10 +12,24 @@
 
 #include "../../include/so_long.h"
 
+static void	render_position(t_point p, char tile)
+{
+	if (tile == 'F')
+		ft_put_image(F_TEXTURE, p);
+	else if (tile == WALL)
+		ft_put_image(WALL_TEXTURE, p);
+	else if (tile == BACKGROUND)
+		ft_put_image(BACKGROUND_TEXTURE, p);
+	else if (tile == COLLECTIBLE)
+		ft_put_image(COLLECTIBLE_TEXTURE, p);
+	else if (tile == EXIT)
+		ft_put_image(EXIT_TEXTURE, p);
+}
+
 void	render(void)
 {
-	int			x;
-	int			y;
+	int	x;
+	int	y;
 
 	ft_printf(BIBLUE "%t" RESET, game()->map.map);
 	y = game()->map.size.y - 1;
@@ -24,20 +38,14 @@ void	render(void)
 		x = game()->map.size.x - 1;
 		while (x >= 0)
 		{
-			if (game()->map.map[y][x] == 'F')
-				ft_put_image(F_TEXTURE, (t_point){x, y});
-			else if (game()->map.map[y][x] == WALL)
-				ft_put_image(WALL_TEXTURE, (t_point){x, y});
-			else if (game()->map.map[y][x] == BACKGROUND)
-				ft_put_image(BACKGROUND_TEXTURE, (t_point){x, y});
-			else if (game()->map.map[y][x] == COLLECTIBLE)
-				ft_put_image(COLLECTIBLE_TEXTURE, (t_point){x, y});
-			else if (game()->map.map[y][x] == PLAYER || game()->map.map[y][x] == 'F')
-				ft_put_image(PLAYER_TEXTURE, (t_point){x, y});
-			else if (game()->map.map[y][x] == EXIT)
-				ft_put_image(EXIT_TEXTURE, (t_point){x, y});
+			render_position((t_point){x, y}, game()->map.map[y][x]);
 			x--;
 		}
 		y--;
 	}
+	// TODO: Render player with sprite animation frame index!
+	ft_put_image(PLAYER_TEXTURE, game()->map.player.position);
+	// Render moves count, TODO: Render without overlapping cordinates!
+	mlx_string_put(game()->mlx, game()->win, 10, 10, 0x00FFFFFF,
+				   ft_itoa(game()->map.player.moves));
 }

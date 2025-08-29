@@ -13,13 +13,13 @@
 #ifndef RENDERING_H
 # define RENDERING_H
 
-# define F_TEXTURE "./assets/textures/hugo/collectible.xpm"
-# define PLAYER_TEXTURE "./assets/textures/dino/dino.xpm"
-# define BACKGROUND_TEXTURE "./assets/textures/dino/background.xpm"
+# define F_TEXTURE "../assets/textures/hugo/collectible.xpm"
+# define PLAYER_TEXTURE "../assets/textures/dino/dino.xpm"
+# define BACKGROUND_TEXTURE "../assets/textures/dino/background.xpm"
 
-# define WALL_TEXTURE "./assets/textures/hugo/wall.xpm"
-# define EXIT_TEXTURE "./assets/textures/hugo/exit.xpm"
-# define COLLECTIBLE_TEXTURE "./assets/textures/pineapple.xpm"
+# define WALL_TEXTURE "../assets/textures/hugo/wall.xpm"
+# define EXIT_TEXTURE "../assets/textures/hugo/exit.xpm"
+# define COLLECTIBLE_TEXTURE "../assets/textures/pineapple.xpm"
 
 # define TEXTURE_SIZE 64
 
@@ -29,7 +29,7 @@ typedef struct s_image
 	char	*address;
 	int		width;
 	int		height;
-	int bpp; // bits per pixel
+	int		bpp; // bits per pixel
 	int		size_line;
 	int		endian;
 }		t_image;

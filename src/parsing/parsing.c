@@ -13,8 +13,9 @@
 #include "../../include/so_long.h"
 
 /* Checks if the map is valid and saves position and counters of map metadata.
-TODO: Still need to validate all walls (considering to do it in floodfill yet!) */
-void	parse_check(void)
+TODO: Still need to validate all walls (considering to do it in floodfill yet!)
+*/
+static void parse_map(void)
 {
 	size_t	x;
 	size_t	y;
@@ -34,12 +35,9 @@ void	parse_check(void)
 			if (game()->map.map[y][x] == COLLECTIBLE)
 				game()->map.collectibles++;
 			x++;
-			// ft_printf("Parsing one more col!\n");
 		}
 		y++;
-		// ft_printf("Parsing one more line!\n");
 	}
-	// ft_printf("Parse is done!\n");
 }
 
 /* Replace some code with ft_substr */
@@ -67,13 +65,13 @@ static char	*get_map_line(int fd)
 }
 
 /* Read and allocate map recursivly */
-char	**read_map(int fd, size_t i)
+static char **read_map(int fd, size_t i)
 {
 	char	*line;
 	char	**result;
 
 	line = get_map_line(fd);
-	if (i ==0)
+	if (i == 0)
 		game()->map.size.x = ft_strlen(line);
 	if (!line && i == 0)
 		return (NULL);
@@ -104,7 +102,6 @@ bool	get_map(char *map_path)
 		exit_so_long("Allocation went wrong!\n");
 	ft_printf("MAP RECURSIVLY of size %d-%d:\n%t\n",
 		game()->map.size.x, game()->map.size.y, game()->map.map);
-
-	parse_check();
+	parse_map();
 	return (true);
 }

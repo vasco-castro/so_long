@@ -32,9 +32,9 @@ void	exit_so_long(char *error)
 	exit(EXIT_FAILURE);
 }
 
-void	exit_successfully(void)
+void	exit_successfully(char *sucess)
 {
-	ft_printf(BIGREEN "Congratulations, you finish the game :)\n" RESET);
+	ft_printf(BIGREEN "%s\n" RESET, sucess);
 	free_game();
 	exit(EXIT_SUCCESS);
 }

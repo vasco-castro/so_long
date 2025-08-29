@@ -12,24 +12,6 @@
 
 #include "../../include/so_long.h"
 
-void	move(t_point np)
-{
-	t_point	op;
-
-	op = game()->map.player.position;
-	if (!ft_ismovevalid(np))
-	{
-		collect(np);
-		exit_game(np);
-		game()->map.map[op.y][op.x] = BACKGROUND;
-		game()->map.map[np.y][np.x] = PLAYER;
-		game()->map.player.position = np;
-		render();
-	}
-	else
-		ft_printf(BRED "Invalid move!\n" RESET);
-}
-
 void	move_up(void)
 {
 	t_point	p;
