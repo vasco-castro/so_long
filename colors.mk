@@ -8,5 +8,5 @@ CYAN	= \e[1;36m
 WHITE	= \e[1;37m
 RESET	= \e[0m
 
-SO_BANNER = printf "$(PURPLE)%s$(RESET)\n" "$$(cat banner.txt)"
+BANNER = printf "$(PURPLE)%s$(RESET)\n" "$$(cat banner.txt)"
 SO_FUNCKING_LONG = printf "$(PURPLE)%s$(RESET)\n" "$$(cat banner2.txt)"

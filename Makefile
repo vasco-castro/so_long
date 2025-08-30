@@ -7,18 +7,18 @@ NAME = so_long
 all: $(NAME)
 
 $(NAME): $(MLX) $(LIBFT) $(OBJS)
-	@echo "$(GREEN)Building $(NAME).$(RESET)"
-	@$(SO_BANNER)
+	@printf "$(GREEN)Building $(NAME).$(RESET)\n"
+	@$(BANNER)
 	@$(COMPILE) $(OBJS) $(LIBFT) $(LIBFT_FLAGS) $(MLX) $(MLX_FLAGS) -o $(NAME)
 
 #Check if both flags (-s -C) can be together
 clean:
-	@echo "$(YELLOW)Cleaning objects.$(RESET)"
+	@printf "$(YELLOW)Cleaning objects.$(RESET)\n"
 	@$(REMOVE) $(OBJS)
 
 #Check if both flags (-s -C) can be together
 fclean: clean
-	@echo "$(YELLOW)Cleaning binaries.$(RESET)"
+	@printf "$(YELLOW)Cleaning binaries.$(RESET)\n"
 	@$(REMOVE) $(NAME)
 	@make clean -s -C $(MLX_DIR)
 	@make fclean -s -C $(LIBFT_DIR)
