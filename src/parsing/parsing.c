@@ -100,7 +100,7 @@ bool	get_map(char *map_path)
 	close(fd);
 	if (!game()->map.map)
 		exit_so_long("Allocation went wrong!\n");
-	ft_printf("MAP RECURSIVLY of size %d-%d:\n%t\n",
+	ft_printf(BGREEN "Allocated map of size %d-%d successfully!\n"RESET"%t\n",
 		game()->map.size.x, game()->map.size.y, game()->map.map);
 	parse_map();
 	return (true);

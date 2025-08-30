@@ -12,10 +12,20 @@
 
 #include "../../include/so_long.h"
 
+static void	render_moves_count(void)
+{
+	char	*moves_str;
+
+	moves_str = ft_strjoin(ft_itoa(game()->map.player.moves), " moves");
+	mlx_string_put(game()->mlx, game()->win, 16, WIN_H - 16, 0x00CC0000,
+		moves_str);
+	free(moves_str);
+}
+
 static void	render_position(t_point p, char tile)
 {
-	if (tile == 'F')
-		ft_put_image(F_TEXTURE, p);
+	if (tile == 'P')
+		ft_put_image(BACKGROUND_TEXTURE, p);
 	else if (tile == WALL)
 		ft_put_image(WALL_TEXTURE, p);
 	else if (tile == BACKGROUND)
@@ -31,21 +41,22 @@ void	render(void)
 	int	x;
 	int	y;
 
-	ft_printf(BIBLUE "%t" RESET, game()->map.map);
 	y = game()->map.size.y - 1;
 	while (y >= 0)
 	{
 		x = game()->map.size.x - 1;
 		while (x >= 0)
 		{
+			// ft_printf(ON_CYAN"Rendering tile %c at position (%d, %d)!\n"RESET, game()->map.map[y][x], x, y);
 			render_position((t_point){x, y}, game()->map.map[y][x]);
 			x--;
 		}
 		y--;
 	}
+	// ft_printf(ON_CYAN"Rendering player asset!\n"RESET);
 	// TODO: Render player with sprite animation frame index!
 	ft_put_image(PLAYER_TEXTURE, game()->map.player.position);
-	// Render moves count, TODO: Render without overlapping cordinates!
-	mlx_string_put(game()->mlx, game()->win, 10, 10, 0x00FFFFFF,
-				   ft_itoa(game()->map.player.moves));
+	// Render moves count, TODO: Render without overlapping text!
+	render_moves_count();
+	ft_printf(BIBLUE "%t\n" RESET, game()->map.map);
 }

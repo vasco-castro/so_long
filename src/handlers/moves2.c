@@ -47,8 +47,7 @@ void	move(t_point new_position)
 {
 	if (!ft_ismovevalid(new_position))
 	{
-		collect_move(new_position);
-		exit_move(new_position);
+		update_move(new_position);
 		game()->map.player.position = new_position;
 		game()->map.player.moves++;
 		ft_printf(YELLOW "Moves: %d\n" RESET, game()->map.player.moves);

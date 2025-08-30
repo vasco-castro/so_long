@@ -15,25 +15,32 @@ SRCS = $(addsuffix .c, \
 # Object files convertion
 OBJS := $(SRCS:%.c=%.o)
 
-#Libraries and it's directories
-MLX_DIR	= $(LIB_DIR)/minilibx-linux
-MLX = $(MLX_DIR)/libmlx.a
-MLX_FLAGS = -L. -lXext -L. -lX11
+UNAME_S := $(shell uname -s)
+
+ifeq ($(UNAME_S),Linux)
+	MLX_DIR	= $(LIB_DIR)/minilibx-linux
+	MLX = $(MLX_DIR)/libmlx.a
+	MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11
+else ifeq ($(UNAME_S),Darwin)
+	MLX_DIR	= $(LIB_DIR)/minilibx-opengl
+	MLX = $(MLX_DIR)/libmlx.a
+	MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+endif
 
 LIBFT_DIR = $(LIB_DIR)/libft
 LIBFT = $(LIBFT_DIR)/libft.a
-LIBFT_FLAGS = -L$(LIBFT_DIR)/inc
+LIBFT_FLAGS = -L$(LIBFT_DIR)/include
 
 #Check if both flags (-s -C) can be together
 #Run git commands for the submodule before running anything else
 $(LIBFT):
 	@echo "$(GREEN)Building LIBFT.$(RESET)"
-	@git submodule update --init $(LIBFT_DIR)
+# 	@git submodule update --init $(LIBFT_DIR)
 	@make -s -C $(LIBFT_DIR)
 
 #Check if both flags (-s -C) can be together
 #Run git commands for the submodule before running anything else
 $(MLX):
 	@echo "$(GREEN)Building MLX.$(RESET)"
-	@git submodule update --init $(MLX_DIR)
+# 	@git submodule update --init $(MLX_DIR)
 	@make -s -C $(MLX_DIR)

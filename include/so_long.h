@@ -13,7 +13,12 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../lib/minilibx-linux/mlx.h"
+# ifdef __APPLE__
+#  include "../lib/minilibx-opengl/mlx.h"
+# else
+#  include "../lib/minilibx-linux/mlx.h"
+# endif
+
 # include "../lib/libft/include/libft.h"
 
 # include "handlers.h"
@@ -22,7 +27,7 @@
 
 // # define WIN_360P
 # define WIN_720P
-//# define WIN_1080P
+// # define WIN_1080P
 
 # ifdef WIN_360P
 #  define WIN_W 640

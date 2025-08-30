@@ -39,8 +39,7 @@ int	main(int argc, char *argv[])
 			exit_so_long("Invalid file.\n");
 		if (get_map(argv[1]))
 		{
-			ft_printf(UGREEN "Map is parsed correctly!\n" RESET);
-			ft_printf(BIGREEN "%t" RESET, game()->map.map);
+			ft_printf(BGREEN "Map is parsed correctly!\n" RESET "%t\n", game()->map.map);
 			so_long();
 		}
 		else
