@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:41:02 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/24 14:26:24 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/08/30 12:04:34 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * @brief Closes the game window and frees resources.
  * @return EXIT_SUCCESS on successful exit.
  */
-int close_window(void)
+int	close_window(void)
 {
 	exit_successfully("Exiting the game. Goodbye!\n");
 	return (EXIT_SUCCESS);
@@ -29,22 +29,18 @@ int close_window(void)
  */
 int	key_handler(int keycode)
 {
-	if (keycode == ESCAPE_KEY || keycode == CLOSE_KEY || keycode == ESCAPE_KEY_DARWIN)
+	if (keycode == ESCAPE_KEY || keycode == CLOSE_KEY)
 		exit_successfully("Exiting the game. Goodbye!\n");
-	else if (keycode == W_KEY || keycode == UP_KEY
-		|| keycode == W_KEY_DARWIN || keycode == UP_KEY_DARWIN)
+	else if (keycode == W_KEY || keycode == UP_KEY)
 		move_up();
-	else if (keycode == A_KEY || keycode == LEFT_KEY
-		|| keycode == A_KEY_DARWIN || keycode == LEFT_KEY_DARWIN)
+	else if (keycode == A_KEY || keycode == LEFT_KEY)
 		move_left();
-	else if (keycode == S_KEY || keycode == DOWN_KEY
-		|| keycode == S_KEY_DARWIN || keycode == DOWN_KEY_DARWIN)
+	else if (keycode == S_KEY || keycode == DOWN_KEY)
 		move_down();
-	else if (keycode == D_KEY || keycode == RIGHT_KEY
-		|| keycode == D_KEY_DARWIN || keycode == RIGHT_KEY_DARWIN)
+	else if (keycode == D_KEY || keycode == RIGHT_KEY)
 		move_right();
 	else
-		ft_printf("KEY: \033[31m%d\033[0m\n", keycode); // TODO: Remove DEBUG ft_printf
+		ft_printf("Pressed key: \033[31m%d\033[0m\n", keycode);
 	return (EXIT_SUCCESS);
 }
 
@@ -72,6 +68,7 @@ int	mouse_handler(int mousecode, int x, int y)
 	else if (mousecode == 7)
 		ft_printf("Scroll left in %d-%d\n", x, y);
 	else
-		ft_printf("Unkown mouse action with code: %d, in %d-%d\n", mousecode, x, y);
+		ft_printf("Unkown mouse action with code: %d, in %d-%d\n",
+			mousecode, x, y);
 	return (EXIT_SUCCESS);
 }

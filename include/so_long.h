@@ -44,13 +44,6 @@
 #  define WIN_H 1080
 # endif
 
-typedef struct s_player
-{
-	t_point	position;
-	size_t	moves;
-	size_t	collectibles;
-}	t_player;
-
 /* Consider remove, but might use later! */
 typedef struct s_entity
 {
@@ -59,37 +52,45 @@ typedef struct s_entity
 }	t_entity;
 
 /**
+ * @brief Represents the player entity in the game.
+ * Holds the player's position, number of moves made, and collectibles gathered.
+ */
+typedef struct s_player
+{
+	t_point	position;
+	size_t	moves;
+	size_t	collectibles;
+}	t_player;
+
+/**
  * @brief Represents the game map structure.
  * This structure is used to define positions and sizes in the game.
- * TODO: Move player to t_game, and remove exit entirely since is not
- *  overwriten in the map anymore.
  */
 typedef struct s_map
 {
 	char		**map;
 	t_point		size;
-
-	t_player	player;
-	t_entity	exit;
 	size_t		collectibles;
 }	t_map;
 
 /**
  * @brief This structure holds the main game data, including the map,
  *  player state, and other entities.
- * TODO: Change this to t_solong and change t_map to t_game.
  */
 typedef struct s_game
 {
-	void	*mlx;
-	void	*win;
-	t_map	map;
+	void		*mlx;
+	void		*win;
+	t_map		map;
+	t_player	player;
 }	t_game;
 
-t_game	*game(void);
+t_player	*player(void);
+t_map		*map(void);
+t_game		*game(void);
 
-void	free_game(void);
-void	exit_so_long(char *error);
-void	exit_successfully(char *sucess);
+void		free_game(void);
+void		exit_so_long(char *error);
+void		exit_successfully(char *sucess);
 
 #endif

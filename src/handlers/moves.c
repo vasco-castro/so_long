@@ -17,7 +17,7 @@ void	move_up(void)
 	t_point	p;
 	t_point	n;
 
-	p = game()->map.player.position;
+	p = player()->position;
 	n = p;
 	n.y--;
 	ft_printf("Trying to move UP from %d-%d to %d-%d\n", p.x, p.y, n.x, n.y);
@@ -29,8 +29,8 @@ void	move_left(void)
 	t_point	p;
 	t_point	n;
 
-	p.x = game()->map.player.position.x;
-	p.y = game()->map.player.position.y;
+	p.x = player()->position.x;
+	p.y = player()->position.y;
 	n = p;
 	n.x--;
 	ft_printf("Trying to move LEFT from %d-%d to %d-%d\n", p.x, p.y, n.x, n.y);
@@ -42,8 +42,8 @@ void	move_down(void)
 	t_point	p;
 	t_point	n;
 
-	p.x = game()->map.player.position.x;
-	p.y = game()->map.player.position.y;
+	p.x = player()->position.x;
+	p.y = player()->position.y;
 	n = p;
 	n.y++;
 	ft_printf("Trying to move DOWN from %d-%d to %d-%d\n", p.x, p.y, n.x, n.y);
@@ -55,8 +55,8 @@ void	move_right(void)
 	t_point	p;
 	t_point	n;
 
-	p.x = game()->map.player.position.x;
-	p.y = game()->map.player.position.y;
+	p.x = player()->position.x;
+	p.y = player()->position.y;
 	n = p;
 	n.x++;
 	ft_printf("Trying to move RIGHT from %d-%d to %d-%d\n", p.x, p.y, n.x, n.y);
