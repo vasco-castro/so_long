@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 18:16:50 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/08/30 15:52:38 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/08/30 15:57:03 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ void	free_game(void)
 		if (map()->map)
 			ft_tabdel(map()->map, map()->size.y -1);
 	}
-	else
-		ft_printf(YELLOW "Game structure is already freed or uninitialized.\n" RESET);
 }
 
 void	exit_so_long(char *error)

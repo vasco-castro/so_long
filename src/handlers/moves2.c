@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:24:31 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/08/30 13:24:23 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/08/30 22:37:11 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ static void	update_move(t_point p)
 {
 	if (map()->map[p.y][p.x] == COLLECTIBLE)
 	{
-		ft_printf(CYAN "Got collectible in position: %d-%d\n" RESET, p.x, p.y);
-		player()->collectibles++;
-		ft_printf(CYAN "Total collectibles is: %d\n" RESET,
-			player()->collectibles);
+		ft_printf(CYAN "Got pineapple in position: %d-%d\n" RESET, p.x, p.y);
+		player()->pineapples++;
+		ft_printf(CYAN "Total pineapples is: %d\n" RESET,
+			player()->pineapples);
 		map()->map[p.y][p.x] = BACKGROUND;
 	}
 	else if (map()->map[p.y][p.x] == EXIT)
 	{
 		ft_printf(CYAN "Got to the exit in position: %d-%d\n" RESET, p.x, p.y);
-		if (player()->collectibles < map()->collectibles)
+		if (player()->pineapples < map()->pineapples)
 		{
-			ft_printf(RED "You need %d more collectibles to exit!\n" RESET,
-				map()->collectibles - player()->collectibles);
+			ft_printf(RED "You need %d more pineapples to exit!\n" RESET,
+				map()->pineapples - player()->pineapples);
 			return ;
 		}
 		exit_successfully("Congratulations, you finish the game :)\n");

@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 19:51:37 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/08/30 14:45:01 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/08/30 22:37:11 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static bool	ft_pointcheckedorinvalid(char *map[], t_point p)
 /**
  * @brief Performs a flood fill search to validate map reachability.
  *
- * TODO: Floodfill until it founds all collectibles and the exit
+ * TODO: Floodfill until it founds all pineapples and the exit
  * TODO: Make a DEBUG version of the flood-fill with debug comments and rendering
  *
  * Recursively explores the map from point p, marking visited tiles as 'F'.

@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:05:40 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/08/30 14:49:31 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/08/31 12:13:50 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 static void	parse_check(t_point p, size_t *count_player, size_t *count_exit)
 {
 	if (map()->map[p.y][p.x] == COLLECTIBLE)
-		map()->collectibles++;
+		map()->pineapples++;
 	else if (map()->map[p.y][p.x] == EXIT)
 	{
 		(*count_exit)++;
@@ -88,7 +88,6 @@ static void	parse_map(void)
 		exit_so_long("Map has no player!");
 }
 
-/* Replace some code with ft_substr */
 /**
  * @brief Reads a line from the map file, strips the newline, and allocates memory.
  *
@@ -168,7 +167,7 @@ bool	get_map(char *map_path)
 	}
 	map()->size.y = 0;
 	map()->size.x = 0;
-	map() -> map = read_map(fd, 0);
+	map()->map = read_map(fd, 0);
 	close(fd);
 	if (!map()->map)
 		exit_so_long("Allocation went wrong!\n");
@@ -176,7 +175,8 @@ bool	get_map(char *map_path)
 		map()->size.x, map()->size.y, map()->map);
 	parse_map();
 	// if (flood_fill(map()->map, player()->position))
-		return (true);
+	// 	return (true);
 	// else
 	// 	exit_so_long("Map is not valid, no valid path to exit!");
+	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:06 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/24 19:15:18 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/08/30 23:57:28 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@
 # include "rendering.h"
 # include "parsing.h"
 
-// # define WIN_360P
-# define WIN_720P
+# define WIN_SQUARE
+// # define WIN_480P
+// # define WIN_720P
 // # define WIN_1080P
 
-# ifdef WIN_360P
+# ifdef WIN_SQUARE
+#  define WIN_W 576
+#  define WIN_H 576
+# elif defined(WIN_480P)
 #  define WIN_W 640
-#  define WIN_H 360
-# endif
-
-# ifdef WIN_720P
+#  define WIN_H 480
+# elif defined(WIN_720P)
 #  define WIN_W 1280
 #  define WIN_H 720
-# endif
-
-# ifdef WIN_1080P
+# elif defined(WIN_1080P)
 #  define WIN_W 1920
 #  define WIN_H 1080
 # endif
@@ -53,13 +53,13 @@ typedef struct s_entity
 
 /**
  * @brief Represents the player entity in the game.
- * Holds the player's position, number of moves made, and collectibles gathered.
+ * Holds the player's position, number of moves made, and pineapples gathered.
  */
 typedef struct s_player
 {
 	t_point	position;
 	size_t	moves;
-	size_t	collectibles;
+	size_t	pineapples;
 }	t_player;
 
 /**
@@ -70,7 +70,7 @@ typedef struct s_map
 {
 	char		**map;
 	t_point		size;
-	size_t		collectibles;
+	size_t		pineapples;
 }	t_map;
 
 /**
