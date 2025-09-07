@@ -26,6 +26,7 @@ OBJS := $(SRCS:%.c=%.o)
 
 UNAME_S := $(shell uname -s)
 
+# MLX Linking and Compilation Flags
 ifeq ($(UNAME_S),Linux)
 	MLX_DIR	= $(LIB_DIR)/minilibx-linux
 	MLX = $(MLX_DIR)/libmlx.a
@@ -36,20 +37,21 @@ else ifeq ($(UNAME_S),Darwin)
 	MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 endif
 
+$(MLX_DIR)/.git:
+	git submodule update --init $(MLX_DIR)
+
+$(MLX): $(MLX_DIR)/.git
+	@printf "$(GREEN)Building MLX.$(RESET)\n"
+	@make -s -C $(MLX_DIR)
+
+# LIBFT linking and compilation flags
 LIBFT_DIR = $(LIB_DIR)/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 LIBFT_FLAGS = -L$(LIBFT_DIR)/include
 
-#Check if both flags (-s -C) can be together
-#Run git commands for the submodule before running anything else
-$(LIBFT):
-	@printf "$(GREEN)Building LIBFT.$(RESET)\n"
-# 	@git submodule update --init $(LIBFT_DIR)
-	@make -s -C $(LIBFT_DIR)
+$(LIBFT_DIR)/.git:
+	git submodule update --init $(LIBFT_DIR)
 
-#Check if both flags (-s -C) can be together
-#Run git commands for the submodule before running anything else
-$(MLX):
-	@printf "$(GREEN)Building MLX.$(RESET)\n"
-# 	@git submodule update --init $(MLX_DIR)
-	@make -s -C $(MLX_DIR)
+$(LIBFT): $(LIBFT_DIR)/.git
+	@printf "$(GREEN)Building LIBFT.$(RESET)\n"
+	@make -s -C $(LIBFT_DIR)
