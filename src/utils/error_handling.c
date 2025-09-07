@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 20:53:37 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/08/31 19:01:00 by vsoares-         ###   ########.fr       */
+/*   Created: 2025/04/20 18:16:50 by vsoares-          #+#    #+#             */
+/*   Updated: 2025/09/07 12:14:58 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include "../../include/so_long.h"
 
-# include "so_long.h"
+void	exit_so_long(char *error)
+{
+	ft_fprintf(2, RED "Error\n%s\n" RESET, error);
+	free_game();
+	exit(EXIT_FAILURE);
+}
 
-# define PLAYER 'P'
-# define WALL '1'
-# define BACKGROUND '0'
-# define COLLECTIBLE 'C'
-# define ENEMY 'X'
-# define EXIT 'E'
-
-bool	get_map(char *map_path);
-
-bool	flood_fill(char *map[], t_point p);
-
-#endif
+void	exit_successfully(char *sucess)
+{
+	ft_printf(BIGREEN "%s\n" RESET, sucess);
+	free_game();
+	exit(EXIT_SUCCESS);
+}

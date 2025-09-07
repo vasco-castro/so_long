@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 19:51:37 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/08/30 22:37:11 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/09/07 12:14:38 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@
  */
 static bool	ft_pointcheckedorinvalid(char *map[], t_point p)
 {
-	return (
-		// p.x < 0 || p.y < 0 ||
-		p.x >= game()->map.size.x || p.y >= game()->map.size.y
-		|| map[p.y][p.x] == WALL || map[p.y][p.x] == 'F'
-	);
+	//TODO: Since it is already parsed, can just check if it's a wall or anything else!
+	return (p.x < 0 || p.y < 0
+		|| p.x >= game()->map.size.x || p.y >= game()->map.size.y
+		|| map[p.y][p.x] == WALL || map[p.y][p.x] == 'F');
 }
 
 /**
@@ -48,7 +47,9 @@ bool	flood_fill(char *map[], t_point p)
 {
 	char	c;
 
-	// render(); //Only here to serve as debug for flood fill to actually view whats flooding
+	/* TODO: Make a struct with mlx just for rendering debug-floodfill.
+		Will need a render function for this specific struct too! */
+	// flood_fill_render();
 	c = map[p.y][p.x];
 	if (map[p.y][p.x] == EXIT)
 		return (0);
@@ -67,4 +68,40 @@ bool	flood_fill(char *map[], t_point p)
 			return (1);
 	map[p.y][p.x] = c;
 	return (0);
+}
+
+static void render_position(t_point p, char tile)
+{
+	if (tile == BACKGROUND || tile == PLAYER)
+		ft_put_image(BACKGROUND_TEXTURE, p);
+	else if (tile == WALL)
+		ft_put_image(WALL_TEXTURE, p);
+	else if (tile == COLLECTIBLE)
+	{
+		ft_put_image(BACKGROUND_TEXTURE, p);
+		ft_put_image(COLLECTIBLE_TEXTURE, p);
+	}
+	else if (tile == EXIT)
+		ft_put_image(EXIT_TEXTURE, p);
+}
+
+/* TODO: Implement rendering for flood fill */
+static void flood_fill_render(void)
+{
+	int x;
+	int y;
+
+	y = map()->size.y - 1;
+	while (y >= 0)
+	{
+		x = map()->size.x - 1;
+		while (x >= 0)
+		{
+			render_position((t_point){x, y}, map()->map[y][x]);
+			x--;
+		}
+		y--;
+	}
+	ft_put_image(F_TEXTURE, player()->position);
+	ft_printf(ON_YELLOW "%t\n" RESET, map()->map);
 }

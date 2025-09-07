@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 21:00:07 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/04/24 14:40:30 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/08/31 18:52:14 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@
 // }
 
 // source image is 24x24
-static void upscale_image(void *src, void *dst, int src_w, int src_h, int dst_w, int dst_h)
+static void upscale_image(void *src, void *dst, int src_w, int src_h)
 {
 	int bpp_src, line_len_src, endian_src;
 	char *src_data = mlx_get_data_addr(src, &bpp_src, &line_len_src, &endian_src);
@@ -195,12 +195,12 @@ static void upscale_image(void *src, void *dst, int src_w, int src_h, int dst_w,
 	int bpp_dst, line_len_dst, endian_dst;
 	char *dst_data = mlx_get_data_addr(dst, &bpp_dst, &line_len_dst, &endian_dst);
 
-	for (int y = 0; y < dst_h; y++)
+	for (int y = 0; y < TEXTURE_SIZE; y++)
 	{
-		for (int x = 0; x < dst_w; x++)
+		for (int x = 0; x < TEXTURE_SIZE; x++)
 		{
-			int src_x = (x * src_w) / dst_w;
-			int src_y = (y * src_h) / dst_h;
+			int src_x = (x * src_w) / TEXTURE_SIZE;
+			int src_y = (y * src_h) / TEXTURE_SIZE;
 
 			int src_i = src_y * line_len_src + src_x * (bpp_src / 8);
 			int dst_i = y * line_len_dst + x * (bpp_dst / 8);
@@ -211,7 +211,7 @@ static void upscale_image(void *src, void *dst, int src_w, int src_h, int dst_w,
 }
 
 static void extract_sprite(void *src_img, void *dst_img,
-						   int x_offset, int y_offset, int sprite_w, int sprite_h)
+	int x_offset, int y_offset, int sprite_w, int sprite_h)
 {
 	int bpp_src, line_len_src, endian_src;
 	char *src_data = mlx_get_data_addr(src_img, &bpp_src, &line_len_src, &endian_src);
@@ -252,7 +252,7 @@ void ft_put_sprite(char *texture, t_point p, int frame_index)
 	upscaled.image = mlx_new_image(game()->mlx, TEXTURE_SIZE, TEXTURE_SIZE);
 	if (!upscaled.image)
 		exit(2);
-	upscale_image(src.image, upscaled.image, src.height, src.height, TEXTURE_SIZE, TEXTURE_SIZE);
+	upscale_image(src.image, upscaled.image, src.height, src.height);
 
 	mlx_put_image_to_window(game()->mlx, game()->win, upscaled.image, TEXTURE_SIZE * p.x, TEXTURE_SIZE * p.y);
 }
@@ -273,7 +273,7 @@ void ft_put_image(char *texture, t_point p)
 	upscaled.image = mlx_new_image(game()->mlx, TEXTURE_SIZE, TEXTURE_SIZE);
 	if (!upscaled.image)
 		exit(2);
-	upscale_image(src.image, upscaled.image, src.height, src.height, TEXTURE_SIZE, TEXTURE_SIZE);
+	upscale_image(src.image, upscaled.image, src.height, src.height);
 	// TODO: PROPERLY DESTROY AND FREE IMAGES IN GENERAL
 
 	mlx_put_image_to_window(game()->mlx, game()->win, upscaled.image, TEXTURE_SIZE * p.x, TEXTURE_SIZE * p.y);

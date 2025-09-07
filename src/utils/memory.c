@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handling.c                                   :+:      :+:    :+:   */
+/*   memory.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/20 18:16:50 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/08/30 15:57:03 by vsoares-         ###   ########.fr       */
+/*   Created: 2025/08/31 18:57:16 by vsoares-          #+#    #+#             */
+/*   Updated: 2025/09/07 12:15:13 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/so_long.h"
 
-void	free_game(void)
+void free_game(void)
 {
 	if (game())
 	{
@@ -21,20 +21,6 @@ void	free_game(void)
 		if (game()->win)
 			free(game()->win);
 		if (map()->map)
-			ft_tabdel(map()->map, map()->size.y -1);
+			ft_tabdel(map()->map, map()->size.y - 1);
 	}
-}
-
-void	exit_so_long(char *error)
-{
-	ft_fprintf(2, RED "Error\n%s\n" RESET, error);
-	free_game();
-	exit(EXIT_FAILURE);
-}
-
-void	exit_successfully(char *sucess)
-{
-	ft_printf(BIGREEN "%s\n" RESET, sucess);
-	free_game();
-	exit(EXIT_SUCCESS);
 }

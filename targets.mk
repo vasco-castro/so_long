@@ -2,13 +2,22 @@
 SRCS_DIR = ./src
 LIB_DIR = ./lib
 
-# Source files (with directories applied)
-SRCS = $(addsuffix .c, \
-	$(addprefix $(SRCS_DIR)/, \
-		so_long error_handling \
-		handlers/handlers handlers/moves handlers/moves2 \
-		parsing/parsing parsing/ft_floodfill \
-		rendering/image rendering/rendering \
+
+# Source files organized by folder, using addprefix and addsuffix
+SRCS_MAIN = main
+SRCS_GRAPHICS = $(addprefix graphics/, image rendering)
+SRCS_HANDLERS = $(addprefix handlers/, handlers moves)
+SRCS_PARSING = $(addprefix parsing/, parsing ft_floodfill)
+SRCS_UTILS = $(addprefix utils/, error_handling memory)
+
+# All source files
+SRCS = $(addprefix $(SRCS_DIR)/, \
+	$(addsuffix .c, \
+		$(SRCS_MAIN) \
+		$(SRCS_GRAPHICS) \
+		$(SRCS_HANDLERS) \
+		$(SRCS_PARSING) \
+		$(SRCS_UTILS) \
 	) \
 )
 

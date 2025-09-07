@@ -6,12 +6,14 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:06 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/08/30 23:57:28 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/09/07 12:10:46 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
+# include "../lib/libft/include/libft.h"
 
 # ifdef __APPLE__
 #  include "../lib/minilibx-opengl/mlx.h"
@@ -19,30 +21,10 @@
 #  include "../lib/minilibx-linux/mlx.h"
 # endif
 
-# include "../lib/libft/include/libft.h"
-
 # include "handlers.h"
-# include "rendering.h"
+# include "graphics.h"
 # include "parsing.h"
-
-# define WIN_SQUARE
-// # define WIN_480P
-// # define WIN_720P
-// # define WIN_1080P
-
-# ifdef WIN_SQUARE
-#  define WIN_W 576
-#  define WIN_H 576
-# elif defined(WIN_480P)
-#  define WIN_W 640
-#  define WIN_H 480
-# elif defined(WIN_720P)
-#  define WIN_W 1280
-#  define WIN_H 720
-# elif defined(WIN_1080P)
-#  define WIN_W 1920
-#  define WIN_H 1080
-# endif
+# include "utils.h"
 
 /* Consider remove, but might use later! */
 typedef struct s_entity
@@ -88,9 +70,5 @@ typedef struct s_game
 t_player	*player(void);
 t_map		*map(void);
 t_game		*game(void);
-
-void		free_game(void);
-void		exit_so_long(char *error);
-void		exit_successfully(char *sucess);
 
 #endif

@@ -6,12 +6,14 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 13:25:15 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/08/30 12:04:27 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/08/31 19:00:49 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HANDLERS_H
 # define HANDLERS_H
+
+# include "so_long.h"
 
 # define CLOSE_KEY 17
 

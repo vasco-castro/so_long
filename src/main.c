@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:28 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/08/30 23:30:36 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/09/07 12:26:39 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,27 +48,6 @@ t_player	*player(void)
 }
 
 /**
- * @brief Initializes the game window and starts the main event loop.
- * Sets up MLX, creates the window, renders the initial state,
- * and hooks event handlers.
- */
-static void	so_long(void)
-{
-	game()->mlx = mlx_init();
-	if (!game()->mlx)
-		exit_so_long(URED "MLX error!" RESET);
-	game()->win = mlx_new_window(game()->mlx, WIN_W, WIN_H,
-		"You are going to have a fun ride ;)");
-	if (!game()->win)
-		exit_so_long(URED "MLX error!" RESET);
-	render();
-	mlx_hook(game()->win, 4, 0, mouse_handler, &game);
-	mlx_hook(game()->win, 2, 1, key_handler, &game);
-	mlx_hook(game()->win, 17, 1, close_window, &game);
-	mlx_loop(game()->mlx);
-}
-
-/**
  * @brief Entry point for the so_long game.
  * Checks arguments, validates the map file, parses the map,
  * and starts the game loop.
@@ -86,14 +65,10 @@ int	main(int argc, char *argv[])
 	{
 		if (!ft_isfile(argv[1], ".ber"))
 			exit_so_long("Invalid file.\n");
-		if (get_map(argv[1]))
-		{
-			ft_printf(BGREEN "Map is parsed correctly!\n" RESET "%t\n",
-				map()->map);
-			so_long();
-		}
-		else
+		if (!get_map(argv[1]))
 			exit_so_long(RED "What a shit map bro!!\n" RESET);
+		ft_printf(BGREEN "Map is parsed correctly!\n" RESET "%t\n", map()->map);
+		game_init();
 	}
 	else
 		exit_so_long(RED "Exit\nToo many arguments.\n" RESET);

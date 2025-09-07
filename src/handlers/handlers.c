@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:41:02 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/08/30 12:04:34 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/09/07 12:36:30 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,22 @@ int	close_window(void)
  */
 int	key_handler(int keycode)
 {
+	t_point p;
+
+	p = player()->position;
 	if (keycode == ESCAPE_KEY || keycode == CLOSE_KEY)
 		exit_successfully("Exiting the game. Goodbye!\n");
 	else if (keycode == W_KEY || keycode == UP_KEY)
-		move_up();
+		p.y--;
 	else if (keycode == A_KEY || keycode == LEFT_KEY)
-		move_left();
+		p.x--;
 	else if (keycode == S_KEY || keycode == DOWN_KEY)
-		move_down();
+		p.y++;
 	else if (keycode == D_KEY || keycode == RIGHT_KEY)
-		move_right();
+		p.x++;
 	else
 		ft_printf("Pressed key: \033[31m%d\033[0m\n", keycode);
+	move(p);
 	return (EXIT_SUCCESS);
 }
 
