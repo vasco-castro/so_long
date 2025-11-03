@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:05:40 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/08/31 12:13:50 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/03 21:05:16 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,15 @@ static void	parse_map(void)
 		}
 		y++;
 	}
-	if (count_exit == 0)
-		exit_so_long("Map has no exit!");
-	if (count_player == 0)
-		exit_so_long("Map has no player!");
+	if (count_exit != 1)
+		exit_so_long("Map needs to have 1 and only 1 exit!");
+	if (count_player != 1)
+		exit_so_long("Map needs to have 1 and only 1 player!");
 }
 
 /**
- * @brief Reads a line from the map file, strips the newline, and allocates memory.
+ * @brief Reads a line from the map file, strips the newline,
+ * and allocates memory.
  *
  * Reads a line from the file descriptor, removes the trailing newline,
  * and returns a newly allocated string containing the line.
@@ -116,9 +117,11 @@ static char	*get_map_line(int fd)
 }
 
 /**
- * @brief Recursively reads all lines from the map file and allocates the map array.
+ * @brief Recursively reads all lines from the map file
+ * and allocates the map array.
  *
- * Reads each line of the map file, storing them in a dynamically allocated array.
+ * Reads each line of the map file,
+ * storing them in a dynamically allocated array.
  * Sets map width and height in the map struct.
  *
  * @param fd File descriptor to read from.
@@ -158,6 +161,7 @@ static char	**read_map(int fd, size_t i)
 bool	get_map(char *map_path)
 {
 	int		fd;
+	char	**map_cpy;
 
 	fd = open(map_path, O_RDONLY);
 	if (fd < 1)
@@ -171,12 +175,13 @@ bool	get_map(char *map_path)
 	close(fd);
 	if (!map()->map)
 		exit_so_long("Allocation went wrong!\n");
-	ft_printf(BGREEN "Allocated map of size %d-%d successfully!\n"RESET"%t\n",
-		map()->size.x, map()->size.y, map()->map);
 	parse_map();
-	// if (flood_fill(map()->map, player()->position))
-	// 	return (true);
-	// else
-	// 	exit_so_long("Map is not valid, no valid path to exit!");
+	map_cpy = ft_tabcpy(map()->map);
+	flood_fill(map_cpy, player()->position);
+	ft_tabfree(map_cpy);
+	if (game()->map.filled == map()->pineapples + 1)
+		return (true);
+	else
+		exit_so_long("Map is not valid, no valid path to exit or collectible!");
 	return (true);
 }

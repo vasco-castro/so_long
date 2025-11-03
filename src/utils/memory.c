@@ -6,13 +6,13 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:57:16 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/09/07 12:15:13 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/03 21:08:02 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-void free_game(void)
+void	free_game(void)
 {
 	if (game())
 	{

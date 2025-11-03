@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 20:53:37 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/08/31 19:01:00 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/03 16:41:39 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@
 
 bool	get_map(char *map_path);
 
-bool	flood_fill(char *map[], t_point p);
+void	flood_fill(char *map[], t_point p);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 13:03:32 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/09/07 12:27:29 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/03 21:08:29 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,14 @@ void	render(void)
  * Sets up MLX, creates the window, renders the initial state,
  * and hooks event handlers.
  */
-void game_init(void)
+void	game_init(void)
 {
 	game()->mlx = mlx_init();
 	if (!game()->mlx)
 		exit_so_long(URED "MLX error!" RESET);
 	// game()->win = mlx_new_window(game()->mlx, 500, 500, "Window 2");
 	game()->win = mlx_new_window(game()->mlx, WIN_W, WIN_H,
-								 "You are going to have a fun ride ;)");
+		"You are going to have a fun ride ;)");
 	if (!game()->win)
 		exit_so_long(URED "MLX error!" RESET);
 	mlx_hook(game()->win, 4, 0, mouse_handler, &game);

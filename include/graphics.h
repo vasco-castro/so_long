@@ -6,16 +6,16 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 20:41:02 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/09/07 12:11:37 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/03 21:06:22 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPHICS_H
- #define GRAPHICS_H
+# define GRAPHICS_H
 
-#include "so_long.h"
+# include "so_long.h"
 
-#define WIN_SQUARE
+# define WIN_SQUARE
 // # define WIN_480P
 // # define WIN_720P
 // # define WIN_1080P
@@ -61,8 +61,8 @@ typedef struct s_image
 	int		endian;
 }		t_image;
 
-void game_init(void);
-void render(void);
+void	game_init(void);
+void	render(void);
 
 void	ft_put_image(char *texture, t_point p);
 void	ft_put_sprite(char *texture, t_point p, int frame_index);

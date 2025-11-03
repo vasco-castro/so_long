@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:41:02 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/09/07 12:36:30 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/03 21:08:51 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	close_window(void)
  */
 int	key_handler(int keycode)
 {
-	t_point p;
+	t_point	p;
 
 	p = player()->position;
 	if (keycode == ESCAPE_KEY || keycode == CLOSE_KEY)

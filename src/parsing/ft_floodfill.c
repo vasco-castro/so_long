@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 19:51:37 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/09/07 12:14:38 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/03 21:14:35 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,55 +22,39 @@
  * @param p   The point to check.
  * @return true if the point is invalid or already checked, false otherwise.
  */
-static bool	ft_pointcheckedorinvalid(char *map[], t_point p)
+static bool	ft_isfillable(char *map[], t_point p)
 {
-	//TODO: Since it is already parsed, can just check if it's a wall or anything else!
-	return (p.x < 0 || p.y < 0
-		|| p.x >= game()->map.size.x || p.y >= game()->map.size.y
-		|| map[p.y][p.x] == WALL || map[p.y][p.x] == 'F');
+	return (map[p.y][p.x] == WALL || map[p.y][p.x] == 'F');
 }
 
 /**
  * @brief Performs a flood fill search to validate map reachability.
  *
- * TODO: Floodfill until it founds all pineapples and the exit
  * TODO: Make a DEBUG version of the flood-fill with debug comments and rendering
  *
  * Recursively explores the map from point p, marking visited tiles as 'F'.
- * Stops if it reaches the exit. Used to check if all required tiles are reachable.
+ * Counts all exits and pineapples.
+ * Used to check if all required tiles are reachable.
  *
  * @param map The map array to flood fill.
  * @param p   The starting point for the flood fill.
- * @return true if a valid path is found, false otherwise.
  */
-bool	flood_fill(char *map[], t_point p)
+void	flood_fill(char *map[], t_point p)
 {
-	char	c;
-
-	/* TODO: Make a struct with mlx just for rendering debug-floodfill.
-		Will need a render function for this specific struct too! */
-	// flood_fill_render();
-	c = map[p.y][p.x];
-	if (map[p.y][p.x] == EXIT)
-		return (0);
+	if (map[p.y][p.x] == EXIT || map[p.y][p.x] == COLLECTIBLE)
+		game()->map.filled++;
 	map[p.y][p.x] = 'F';
-	if (!ft_pointcheckedorinvalid(map, (t_point){p.x, p.y - 1}))
-		if (flood_fill(map, (t_point){p.x, p.y - 1}))
-			return (1);
-	if (!ft_pointcheckedorinvalid(map, (t_point){p.x, p.y + 1}))
-		if (flood_fill(map, (t_point){p.x, p.y + 1}))
-			return (1);
-	if (!ft_pointcheckedorinvalid(map, (t_point){p.x - 1, p.y}))
-		if (flood_fill(map, (t_point){p.x - 1, p.y}))
-			return (1);
-	if (!ft_pointcheckedorinvalid(map, (t_point){p.x + 1, p.y}))
-		if (flood_fill(map, (t_point){p.x + 1, p.y}))
-			return (1);
-	map[p.y][p.x] = c;
-	return (0);
+	if (!ft_isfillable(map, (t_point){p.x, p.y - 1}))
+		flood_fill(map, (t_point){p.x, p.y - 1});
+	if (!ft_isfillable(map, (t_point){p.x, p.y + 1}))
+		flood_fill(map, (t_point){p.x, p.y + 1});
+	if (!ft_isfillable(map, (t_point){p.x - 1, p.y}))
+		flood_fill(map, (t_point){p.x - 1, p.y});
+	if (!ft_isfillable(map, (t_point){p.x + 1, p.y}))
+		flood_fill(map, (t_point){p.x + 1, p.y});
 }
 
-static void render_position(t_point p, char tile)
+static void	render_position(t_point p, char tile)
 {
 	if (tile == BACKGROUND || tile == PLAYER)
 		ft_put_image(BACKGROUND_TEXTURE, p);
@@ -86,10 +70,10 @@ static void render_position(t_point p, char tile)
 }
 
 /* TODO: Implement rendering for flood fill */
-static void flood_fill_render(void)
+static void	flood_fill_render(void)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = map()->size.y - 1;
 	while (y >= 0)
