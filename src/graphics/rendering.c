@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 13:03:32 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/03 21:08:29 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/06 19:39:56 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@
 static void	render_moves_count(void)
 {
 	char	*moves_str;
-	char	*pineapples_str;
-	char	*p_pineapples;
-	char	*m_pineapples;
 	char	*moves;
 
 	moves = ft_itoa(player()->moves);
@@ -29,17 +26,31 @@ static void	render_moves_count(void)
 		moves_str);
 	free(moves);
 	free(moves_str);
-	p_pineapples = ft_itoa(player()->pineapples);
-	m_pineapples = ft_itoa(map()->pineapples);
-	pineapples_str = ft_strjoin("Collected ", p_pineapples);
-	pineapples_str = ft_strjoin(pineapples_str, " / ");
-	pineapples_str = ft_strjoin(pineapples_str, m_pineapples);
-	pineapples_str = ft_strjoin(pineapples_str, " pineapples");
+}
+
+static void	render_pineapples(void)
+{
+	char	*pineapples_str;
+	char	*pineapples;
+	char	*temp;
+
+	pineapples = ft_itoa(player()->pineapples);
+	temp = ft_strjoin("Collected ", pineapples);
+	free(pineapples);
+	pineapples_str = temp;
+	temp = ft_strjoin(pineapples_str, " / ");
+	free(pineapples_str);
+	pineapples_str = temp;
+	pineapples = ft_itoa(map()->pineapples);
+	temp = ft_strjoin(pineapples_str, pineapples);
+	free(pineapples);
+	free(pineapples_str);
+	pineapples_str = temp;
+	temp = ft_strjoin(pineapples_str, " pineapples");
 	mlx_string_put(game()->mlx, game()->win, 16, 32, 0x00CC0000,
 		pineapples_str);
 	free(pineapples_str);
-	free(p_pineapples);
-	free(m_pineapples);
+	free(temp);
 }
 
 static void	render_position(t_point p, char tile)
@@ -83,6 +94,7 @@ void	render(void)
 	}
 	ft_put_image(PLAYER_TEXTURE, DEFAULT_PLAYER_POS);
 	render_moves_count();
+	render_pineapples();
 	ft_printf(BIBLUE "%t\n" RESET, map()->map);
 }
 
@@ -96,7 +108,6 @@ void	game_init(void)
 	game()->mlx = mlx_init();
 	if (!game()->mlx)
 		exit_so_long(URED "MLX error!" RESET);
-	// game()->win = mlx_new_window(game()->mlx, 500, 500, "Window 2");
 	game()->win = mlx_new_window(game()->mlx, WIN_W, WIN_H,
 		"You are going to have a fun ride ;)");
 	if (!game()->win)
