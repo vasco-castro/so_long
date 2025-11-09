@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:57:16 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/06 20:41:36 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/09 19:17:29 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	free_game(void)
 {
 	if (game())
 	{
+		clean_textures();
 		if (game()->win)
 			mlx_destroy_window(game()->mlx, game()->win);
 		if (game()->mlx)

@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:06 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/03 20:42:01 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/09 16:52:42 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_game
 	void		*win;
 	t_map		map;
 	t_player	player;
+	t_textures	textures;
 }	t_game;
 
 t_player	*player(void);

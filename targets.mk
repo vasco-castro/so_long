@@ -5,7 +5,7 @@ LIB_DIR = ./lib
 
 # Source files organized by folder, using addprefix and addsuffix
 SRCS_MAIN = main
-SRCS_GRAPHICS = $(addprefix graphics/, image rendering)
+SRCS_GRAPHICS = $(addprefix graphics/, rendering load_textures put_textures put_sprites)
 SRCS_HANDLERS = $(addprefix handlers/, handlers moves)
 SRCS_PARSING = $(addprefix parsing/, parsing ft_floodfill)
 SRCS_UTILS = $(addprefix utils/, error_handling memory)
