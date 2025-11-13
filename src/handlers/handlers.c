@@ -18,7 +18,7 @@
  */
 int	close_window(void)
 {
-	exit_successfully("Exiting the game. Goodbye!\n");
+	exit_successfully("Goodbye! Thanks for playing ;)\n");
 	return (EXIT_SUCCESS);
 }
 
@@ -33,7 +33,7 @@ int	key_handler(int keycode)
 
 	p = player()->position;
 	if (keycode == ESCAPE_KEY || keycode == CLOSE_KEY)
-		exit_successfully("Exiting the game. Goodbye!\n");
+		return (close_window());
 	else if (keycode == W_KEY || keycode == UP_KEY)
 		p.y--;
 	else if (keycode == A_KEY || keycode == LEFT_KEY)
@@ -43,7 +43,7 @@ int	key_handler(int keycode)
 	else if (keycode == D_KEY || keycode == RIGHT_KEY)
 		p.x++;
 	else
-		ft_printf("Pressed key: \033[31m%d\033[0m\n", keycode);
+		debug("Pressed key: "CYAN"%d\n"RESET, keycode);
 	move(p);
 	return (EXIT_SUCCESS);
 }
@@ -58,21 +58,21 @@ int	key_handler(int keycode)
 int	mouse_handler(int mousecode, int x, int y)
 {
 	if (mousecode == 1)
-		ft_printf("Left Click in %d-%d\n", x, y);
+		debug("Left Click in %d-%d\n", x, y);
 	else if (mousecode == 2)
-		ft_printf("Right Click in %d-%d\n", x, y);
+		debug("Right Click in %d-%d\n", x, y);
 	else if (mousecode == 3)
-		ft_printf("Middle Click in %d-%d\n", x, y);
+		debug("Middle Click in %d-%d\n", x, y);
 	else if (mousecode == 4)
-		ft_printf("Scroll UP in %d-%d\n", x, y);
+		debug("Scroll UP in %d-%d\n", x, y);
 	else if (mousecode == 5)
-		ft_printf("Scroll DOWN in %d-%d\n", x, y);
+		debug("Scroll DOWN in %d-%d\n", x, y);
 	else if (mousecode == 6)
-		ft_printf("Scroll right in %d-%d\n", x, y);
+		debug("Scroll right in %d-%d\n", x, y);
 	else if (mousecode == 7)
-		ft_printf("Scroll left in %d-%d\n", x, y);
+		debug("Scroll left in %d-%d\n", x, y);
 	else
-		ft_printf("Unkown mouse action with code: %d, in %d-%d\n",
+		debug("Unkown mouse action with code: %d, in %d-%d\n",
 			mousecode, x, y);
 	return (EXIT_SUCCESS);
 }

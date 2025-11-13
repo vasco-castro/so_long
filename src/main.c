@@ -61,13 +61,13 @@ int	main(int argc, char *argv[])
 {
 	if (argc == 1)
 		exit_so_long(RED "You didn't pass the map as an argument." RESET);
-	else if (argc == 2)
+	else if (argc == 2 || (argc == 3 && change_debug_mode(is_debug_flag(argv[2]))))
 	{
 		if (!ft_isfile(argv[1], ".ber"))
 			exit_so_long("Invalid file.\n");
 		if (!get_map(argv[1]))
 			exit_so_long(RED "What a shit map bro!!\n" RESET);
-		ft_printf(BGREEN "Map is parsed correctly!\n" RESET "%t\n", map()->map);
+		debug(BGREEN "Map is parsed correctly!\n" RESET "%t\n", map()->map);
 		game_init();
 	}
 	else

@@ -95,7 +95,7 @@ void	render(void)
 	put_scaled(&game()->textures.player, DEFAULT_PLAYER_POS);
 	render_move_count();
 	render_pineapple_count();
-	ft_printf(BIBLUE "%t\n" RESET, map()->map);
+	debug(BIBLUE "%t\n" RESET, map()->map);
 }
 
 /**

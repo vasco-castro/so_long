@@ -16,37 +16,37 @@ static void	update_move(t_point p)
 {
 	if (map()->map[p.y][p.x] == COLLECTIBLE)
 	{
-		ft_printf(CYAN "Got pineapple in position: %d-%d\n" RESET, p.x, p.y);
+		debug(CYAN "Got pineapple in position: %d-%d\n" RESET, p.x, p.y);
 		player()->pineapples++;
-		ft_printf(CYAN "Total pineapples is: %d\n" RESET,
+		debug(CYAN "Total pineapples is: %d\n" RESET,
 			player()->pineapples);
 		map()->map[p.y][p.x] = BACKGROUND;
 	}
 	else if (map()->map[p.y][p.x] == EXIT)
 	{
-		ft_printf(CYAN "Got to the exit in position: %d-%d\n" RESET, p.x, p.y);
+		debug(CYAN "Got to the exit in position: %d-%d\n" RESET, p.x, p.y);
 		if (player()->pineapples < map()->pineapples)
 		{
-			ft_printf(RED "You need %d more pineapples to exit!\n" RESET,
+			debug(RED "You need %d more pineapples to exit!\n" RESET,
 				map()->pineapples - player()->pineapples);
 			return ;
 		}
-		exit_successfully("Congratulations, you finish the game :)\n");
+		exit_successfully("Congratulations, you got all the pineapples :)\n");
 	}
 }
 
 void	move(t_point p)
 {
-	ft_printf("Trying to move from %d-%d to %d-%d\n",
+	debug("Trying to move from %d-%d to %d-%d\n",
 		player()->position.x, player()->position.y, p.x, p.y);
 	if (map()->map[p.y][p.x] != WALL)
 	{
 		update_move(p);
 		player()->position = p;
 		player()->moves++;
-		ft_printf(YELLOW "Moves: %d\n" RESET, player()->moves);
+		debug(YELLOW "Moves: %d\n" RESET, player()->moves);
 		render();
 	}
 	else
-		ft_printf(BRED "Invalid move!\n" RESET);
+		debug(BRED "Invalid move!\n" RESET);
 }
