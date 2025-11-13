@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:05:40 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/03 21:05:16 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/09 21:32:17 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ static char	*get_map_line(int fd)
 	char	*newline_pos;
 
 	line = get_next_line(fd);
-	if (!line || line[0] == '\n')
+	if (!line)
 		return (NULL);
 	newline_pos = ft_strchr(line, '\n');
 	if (newline_pos)
@@ -113,6 +113,7 @@ static char	*get_map_line(int fd)
 	else
 		clean_line = ft_substr(line, 0, ft_strlen(line));
 	free(line);
+	safe_alloc(clean_line);
 	return (clean_line);
 }
 
@@ -134,10 +135,10 @@ static char	**read_map(int fd, size_t i)
 	char	**result;
 
 	line = get_map_line(fd);
-	if (i == 0)
-		map()->size.x = ft_strlen(line);
 	if (!line && i == 0)
 		return (NULL);
+	if (i == 0)
+		map()->size.x = ft_strlen(line);
 	else if (!line && i != 0)
 	{
 		map()->size.y = i;
@@ -169,14 +170,12 @@ bool	get_map(char *map_path)
 		close(fd);
 		exit_so_long("Invalid file.\n");
 	}
-	map()->size.y = 0;
-	map()->size.x = 0;
 	map()->map = read_map(fd, 0);
 	close(fd);
-	if (!map()->map)
-		exit_so_long("Allocation went wrong!\n");
+	safe_alloc(map()->map);
 	parse_map();
 	map_cpy = ft_tabcpy(map()->map);
+	safe_alloc(map_cpy);
 	flood_fill(map_cpy, player()->position);
 	ft_tabfree(map_cpy);
 	if (game()->map.filled == map()->pineapples + 1)

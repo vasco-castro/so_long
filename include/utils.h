@@ -15,6 +15,7 @@
 
 # include "so_long.h"
 
+void	safe_alloc(void *alloc);
 void	free_game(void);
 void	exit_so_long(char *error);
 void	exit_successfully(char *sucess);

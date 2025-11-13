@@ -12,6 +12,12 @@
 
 #include "../../include/so_long.h"
 
+void	safe_alloc(void *alloc)
+{
+	if (!alloc)
+		exit_so_long("Allocation went wrong!!!");
+}
+
 void	free_game(void)
 {
 	if (game())

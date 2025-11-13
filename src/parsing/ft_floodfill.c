@@ -53,39 +53,3 @@ void	flood_fill(char *map[], t_point p)
 	if (!ft_isfillable(map, (t_point){p.x + 1, p.y}))
 		flood_fill(map, (t_point){p.x + 1, p.y});
 }
-
-static void	render_position(t_point p, char tile)
-{
-	if (tile == BACKGROUND || tile == PLAYER)
-		ft_put_image(BACKGROUND_TEXTURE, p);
-	else if (tile == WALL)
-		ft_put_image(WALL_TEXTURE, p);
-	else if (tile == COLLECTIBLE)
-	{
-		ft_put_image(BACKGROUND_TEXTURE, p);
-		ft_put_image(COLLECTIBLE_TEXTURE, p);
-	}
-	else if (tile == EXIT)
-		ft_put_image(EXIT_TEXTURE, p);
-}
-
-/* TODO: Implement rendering for flood fill */
-static void	flood_fill_render(void)
-{
-	int	x;
-	int	y;
-
-	y = map()->size.y - 1;
-	while (y >= 0)
-	{
-		x = map()->size.x - 1;
-		while (x >= 0)
-		{
-			render_position((t_point){x, y}, map()->map[y][x]);
-			x--;
-		}
-		y--;
-	}
-	ft_put_image(F_TEXTURE, player()->position);
-	ft_printf(ON_YELLOW "%t\n" RESET, map()->map);
-}
