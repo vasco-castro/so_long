@@ -18,7 +18,7 @@
  */
 int	close_window(void)
 {
-	exit_successfully("Goodbye! Thanks for playing ;)\n");
+	exit_successfully("Goodbye! Thanks for playing ;)");
 	return (EXIT_SUCCESS);
 }
 

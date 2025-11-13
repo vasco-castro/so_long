@@ -31,7 +31,7 @@ static void	update_move(t_point p)
 				map()->pineapples - player()->pineapples);
 			return ;
 		}
-		exit_successfully("Congratulations, you got all the pineapples :)\n");
+		exit_successfully("Congratulations, you got all the pineapples :)");
 	}
 }
 
