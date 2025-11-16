@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:28 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/16 18:03:56 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/16 19:49:13 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  */
 t_game	*game(void)
 {
-	static t_game	data;
+	static t_game	data = {0};
 
 	return (&data);
 }
@@ -67,11 +67,11 @@ int	main(int argc, char *argv[])
 		if (!ft_isfile(argv[1], ".ber"))
 			exit_so_long("Invalid file.\n");
 		if (!get_map(argv[1]))
-			exit_so_long(RED "What a shit map bro!!\n" RESET);
+			exit_so_long(RED "Invalid map.\n" RESET);
 		debug(BGREEN "Map is parsed correctly!\n" RESET "%t\n", map()->map);
 		game_init();
 	}
 	else
-		exit_so_long(RED "Exit\nToo many arguments.\n" RESET);
+		exit_so_long(RED "Too many arguments.\n" RESET);
 	return (EXIT_SUCCESS);
 }

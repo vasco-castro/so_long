@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 20:53:37 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/03 16:41:39 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/16 18:49:41 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define EXIT 'E'
 
 bool	get_map(char *map_path);
-
+void	validate_map(void);
 void	flood_fill(char *map[], t_point p);
 
 #endif

@@ -7,7 +7,7 @@ LIB_DIR = ./lib
 SRCS_MAIN = main
 SRCS_GRAPHICS = $(addprefix graphics/, rendering load_textures put_textures put_sprites)
 SRCS_HANDLERS = $(addprefix handlers/, handlers moves)
-SRCS_PARSING = $(addprefix parsing/, parsing ft_floodfill)
+SRCS_PARSING = $(addprefix parsing/, parse_map validate_map)
 SRCS_UTILS = $(addprefix utils/, error_handling memory)
 
 # All source files

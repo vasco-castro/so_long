@@ -1,92 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:05:40 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/09 21:32:17 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/16 19:53:37 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
-
-/**
- * @brief Checks a single map tile for validity and updates metadata counters.
- *
- * This function validates the contents of a map cell at position `p`.
- * It increments the collectible, player, and exit counters as needed,
- * sets the player's position, and ensures map rules (walls, valid chars).
- *
- * @param p           The position in the map to check.
- * @param count_player Pointer to the player counter.
- * @param count_exit   Pointer to the exit counter.
- *
- * @throw Calls exit_so_long() if map rules are violated
- * (multiple players/exits, invalid chars, missing walls).
- */
-static void	parse_check(t_point p, size_t *count_player, size_t *count_exit)
-{
-	if (map()->map[p.y][p.x] == COLLECTIBLE)
-		map()->pineapples++;
-	else if (map()->map[p.y][p.x] == EXIT)
-	{
-		(*count_exit)++;
-		if (*count_exit > 1)
-			exit_so_long("Map has more than one exit!");
-	}
-	else if (map()->map[p.y][p.x] == PLAYER)
-	{
-		player()->position = (t_point){p.x, p.y};
-		(*count_player)++;
-		if (*count_player > 1)
-			exit_so_long("Map has more than one player!");
-	}
-	else if (map()->map[p.y][p.x] != BACKGROUND && map()->map[p.y][p.x] != WALL)
-		exit_so_long("Map has invalid characters!");
-	if (p.y == 0 || p.y == map()->size.y - 1
-		|| p.x == 0 || p.x == map()->size.x - 1)
-		if (map()->map[p.y][p.x] != WALL)
-			exit_so_long("Map is not surrounded by walls!");
-}
-
-/**
- * @brief Validates the entire map and updates metadata.
- *
- * Iterates through the map, checking each cell for validity using parse_check().
- * Ensures the map is rectangular, contains exactly one player and one exit,
- * and that all required rules are met.
- *
- * @throw Calls exit_so_long() if the map is invalid.
- */
-static void	parse_map(void)
-{
-	size_t	x;
-	size_t	y;
-	size_t	count_player;
-	size_t	count_exit;
-
-	y = 0;
-	count_exit = 0;
-	count_player = 0;
-	while (map()->map[y])
-	{
-		if (map()->size.x != ft_strlen(map()->map[y]))
-			exit_so_long("Map size is incompatibly!");
-		x = 0;
-		while (map()->map[y][x])
-		{
-			parse_check((t_point){x, y}, &count_player, &count_exit);
-			x++;
-		}
-		y++;
-	}
-	if (count_exit != 1)
-		exit_so_long("Map needs to have 1 and only 1 exit!");
-	if (count_player != 1)
-		exit_so_long("Map needs to have 1 and only 1 player!");
-}
 
 /**
  * @brief Reads a line from the map file, strips the newline,
@@ -173,7 +97,7 @@ bool	get_map(char *map_path)
 	map()->map = read_map(fd, 0);
 	close(fd);
 	safe_alloc(map()->map);
-	parse_map();
+	validate_map();
 	map_cpy = ft_tabcpy(map()->map);
 	safe_alloc(map_cpy);
 	flood_fill(map_cpy, player()->position);

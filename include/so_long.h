@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:06 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/09 16:52:42 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/16 19:29:53 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef struct s_map
 	char	**map;
 	t_point	size;
 	size_t	pineapples;
+	size_t	player;
+	size_t	exit;
 	size_t	filled;
 }	t_map;
 
