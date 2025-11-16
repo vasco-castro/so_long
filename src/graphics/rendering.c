@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 13:03:32 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/09 17:47:43 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/16 18:20:37 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,14 @@ void	render(void)
 	int		y;
 	t_point	pos;
 
-	pos = MIN_GRID_POS;
-	while (pos.y <= MAX_GRID_POS.y)
+	pos = (t_point){0, 0};
+	while (pos.y < (WIN_H / TEXTURE_SIZE))
 	{
 		pos.x = 0;
-		while (pos.x <= MAX_GRID_POS.x)
+		while (pos.x < (WIN_W / TEXTURE_SIZE))
 		{
-			x = player()->position.x - (MAX_GRID_W / 2) + pos.x;
-			y = player()->position.y - (MAX_GRID_H / 2) + pos.y;
+			x = player()->position.x - (WIN_W / TEXTURE_SIZE / 2) + pos.x;
+			y = player()->position.y - (WIN_H / TEXTURE_SIZE / 2) + pos.y;
 			if (x < 0 || y < 0 || x >= (int)map()->size.x
 				|| y >= (int)map()->size.y)
 				put_scaled(&game()->textures.water, pos);
@@ -92,7 +92,7 @@ void	render(void)
 		}
 		pos.y++;
 	}
-	put_scaled(&game()->textures.player, DEFAULT_PLAYER_POS);
+	put_scaled(&game()->textures.player, game()->textures.player_pos);
 	render_move_count();
 	render_pineapple_count();
 	debug(BIBLUE "%t\n" RESET, map()->map);

@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 20:41:02 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/09 19:15:51 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/16 18:21:51 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,6 @@
 
 # define TEXTURE_SIZE 64
 
-# define MAX_GRID_W (WIN_W / TEXTURE_SIZE) // 576 / 64 = 9
-# define MAX_GRID_H (WIN_H / TEXTURE_SIZE) // 324 / 64 = 5
-# define MAX_GRID_POS (t_point){MAX_GRID_W - 1, MAX_GRID_H - 1} // (8, 4)
-# define MIN_GRID_POS (t_point){0, 0} // (0, 0)
-# define DEFAULT_PLAYER_POS (t_point){MAX_GRID_W / 2, MAX_GRID_H / 2} // (4, 2)
-
 typedef struct s_image
 {
 	void	*img;
@@ -69,6 +63,7 @@ typedef struct s_image
 typedef struct s_textures
 {
 	t_image	player;
+	t_point	player_pos;
 	t_image	pineapple;
 	t_image	water;
 	t_image	sand;

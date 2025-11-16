@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:28 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/09/07 12:26:39 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/16 18:03:56 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,10 @@ t_player	*player(void)
  */
 int	main(int argc, char *argv[])
 {
+	parse_debug_mode(&argc, argv);
 	if (argc == 1)
 		exit_so_long(RED "You didn't pass the map as an argument." RESET);
-	else if (argc == 2 || (argc == 3 && change_debug_mode(is_debug_flag(argv[2]))))
+	else if (argc == 2)
 	{
 		if (!ft_isfile(argv[1], ".ber"))
 			exit_so_long("Invalid file.\n");

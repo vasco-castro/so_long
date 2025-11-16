@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 15:33:55 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/09 19:18:09 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/16 18:20:16 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	load_textures(void)
 
 	player = scale_sprite(PLAYER_TEXTURE, 0, 0);
 	game()->textures.player = player;
+	game()->textures.player_pos.x = WIN_W / TEXTURE_SIZE / 2;
+	game()->textures.player_pos.y = WIN_H / TEXTURE_SIZE / 2;
 	game()->textures.pineapple = scale_xpm(COLLECTIBLE_TEXTURE);
 	game()->textures.water = scale_xpm(WALL_TEXTURE);
 	game()->textures.sand = scale_xpm(BACKGROUND_TEXTURE);
