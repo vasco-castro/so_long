@@ -1,6 +1,7 @@
 [submodule "lib/libft"]
 	path = lib/libft
 	url = https://github.com/vasco-castro/libV.git
+	branch = master
 [submodule "lib/minilibx-linux"]
 	path = lib/minilibx-linux
 	url = https://github.com/vasco-castro/minilibx-linux.git

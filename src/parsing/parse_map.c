@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:05:40 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/16 19:53:37 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/16 20:41:14 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ bool	get_map(char *map_path)
 	if (fd < 1)
 	{
 		close(fd);
-		exit_so_long("Invalid file.\n");
+		exit_so_long("Invalid file.");
 	}
 	map()->map = read_map(fd, 0);
 	close(fd);
