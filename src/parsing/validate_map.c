@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 18:48:20 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/16 20:02:53 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/19 18:07:52 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	validate_map(void)
 	y = 0;
 	while (map()->map[y])
 	{
-		if (map()->size.x != ft_strlen(map()->map[y]))
+		if ((size_t) map()->size.x != ft_strlen(map()->map[y]))
 			exit_so_long("Map size is incompatibly!");
 		x = 0;
 		while (map()->map[y][x])
