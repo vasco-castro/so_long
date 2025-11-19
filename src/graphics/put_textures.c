@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 16:13:35 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/09 19:12:58 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/19 13:06:48 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,16 @@ t_image	scale_xpm(char *path)
 
 	src.img = mlx_xpm_file_to_image(game()->mlx, path, &w, &h);
 	if (!src.img)
-	{
-		dst.img = NULL;
-		return (dst);
-	}
+		exit_so_long("Image error!");
 	src.addr = mlx_get_data_addr(src.img, &src.bpp, &src.line, &src.endian);
 	src.w = w;
 	src.h = h;
 	dst.img = mlx_new_image(game()->mlx, TEXTURE_SIZE, TEXTURE_SIZE);
+	if (!dst.img)
+	{
+		mlx_destroy_image(game()->mlx, src.img);
+		exit_so_long("Image error!");
+	}
 	dst.addr = mlx_get_data_addr(dst.img, &dst.bpp, &dst.line, &dst.endian);
 	dst.w = TEXTURE_SIZE;
 	dst.h = TEXTURE_SIZE;

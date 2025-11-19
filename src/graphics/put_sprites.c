@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 17:14:50 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/09 18:20:06 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/19 13:01:36 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,7 @@ static t_image	load_sheet(char *path)
 
 	sheet.img = mlx_xpm_file_to_image(game()->mlx, path, &w, &h);
 	if (!sheet.img)
-	{
-		sheet.img = NULL;
-		return (sheet);
-	}
+		exit_so_long("Image error!");
 	sheet.addr = mlx_get_data_addr(sheet.img, &sheet.bpp,
 			&sheet.line, &sheet.endian);
 	sheet.w = w;
@@ -82,11 +79,13 @@ t_image	scale_sprite(char *path, int sx, int sy)
 	t_image	sheet;
 
 	sheet = load_sheet(path);
+	if (!sheet.img)
+		exit_so_long("Image error!");
 	spr.img = mlx_new_image(game()->mlx, TEXTURE_SIZE, TEXTURE_SIZE);
 	if (!spr.img)
 	{
-		spr.img = NULL;
-		return (spr);
+		mlx_destroy_image(game()->mlx, sheet.img);
+		exit_so_long("Image error!");
 	}
 	spr.addr = mlx_get_data_addr(spr.img, &spr.bpp, &spr.line, &spr.endian);
 	spr.w = TEXTURE_SIZE;
