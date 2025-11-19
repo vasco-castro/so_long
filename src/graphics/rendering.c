@@ -6,7 +6,7 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 13:03:32 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/16 18:20:37 by vsoares-         ###   ########.fr       */
+/*   Updated: 2025/11/19 14:39:37 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	render_move_count(void)
 
 	moves = ft_itoa(player()->moves);
 	moves_str = ft_strjoin(moves, " moves");
-	mlx_string_put(game()->mlx, game()->win, 16, 16, 0x00CC0000,
+	mlx_string_put(game()->mlx, game()->win, 16, 16, 0,
 		moves_str);
 	free(moves);
 	free(moves_str);
@@ -47,7 +47,7 @@ static void	render_pineapple_count(void)
 	free(pineapples_str);
 	pineapples_str = temp;
 	temp = ft_strjoin(pineapples_str, " pineapples");
-	mlx_string_put(game()->mlx, game()->win, 16, 32, 0x00CC0000,
+	mlx_string_put(game()->mlx, game()->win, 16, 32, 0,
 		pineapples_str);
 	free(pineapples_str);
 	free(temp);
