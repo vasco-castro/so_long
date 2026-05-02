@@ -6,11 +6,11 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 18:48:20 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/19 18:07:52 by vsoares-         ###   ########.fr       */
+/*   Updated: 2026/05/02 20:39:40 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../includes/so_long.h"
 
 /**
  * @brief Checks a single map tile for validity and updates metadata counters.

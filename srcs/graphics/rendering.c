@@ -6,11 +6,11 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 13:03:32 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/19 14:39:37 by vsoares-         ###   ########.fr       */
+/*   Updated: 2026/05/02 20:39:40 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../includes/so_long.h"
 
 /* Render pineapples count aswell,
  and render a background to fix overlap.

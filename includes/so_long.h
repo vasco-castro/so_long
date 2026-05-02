@@ -6,14 +6,14 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:06 by vsoares-          #+#    #+#             */
-/*   Updated: 2025/11/16 19:29:53 by vsoares-         ###   ########.fr       */
+/*   Updated: 2026/05/02 20:29:47 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../lib/libft/include/libft.h"
+# include "../lib/libft/libft.h"
 
 # ifdef __APPLE__
 #  include "../lib/minilibx-opengl/mlx.h"

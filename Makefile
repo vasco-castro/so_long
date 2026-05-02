@@ -1,26 +1,27 @@
-include colors.mk
-include config.mk
-include targets.mk
+-include mk/config.mk
+-include mk/targets.mk
 
 NAME = so_long
 
 all: $(NAME)
 
-$(NAME): $(MLX) $(LIBFT) $(OBJS)
+$(NAME): $(MLX) $(LIBFT) $(OBJ)
 	@printf "$(GREEN)Building $(NAME).$(RESET)\n"
 	@$(BANNER)
-	@$(COMPILE) $(OBJS) $(LIBFT) $(LIBFT_FLAGS) $(MLX) $(MLX_FLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(LIBFT_FLAGS) $(MLX) $(MLX_FLAGS) -o $(NAME)
 
-#Check if both flags (-s -C) can be together
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
 	@printf "$(YELLOW)Cleaning objects.$(RESET)\n"
-	@$(REMOVE) $(OBJS)
+	@$(RM) $(OBJ)
 
-#Check if both flags (-s -C) can be together
 fclean: clean
 	@printf "$(YELLOW)Cleaning binaries.$(RESET)\n"
-	@$(REMOVE) $(NAME)
-	@make clean -s -C $(MLX_DIR)
-	@make fclean -s -C $(LIBFT_DIR)
+	@$(RM) $(NAME)
+	@make clean -sC $(MLX_DIR) > /dev/null 2> /dev/null
+	@make fclean -sC $(LIBFT_DIR)
 
 re: fclean all
