@@ -6,11 +6,11 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:28 by vsoares-          #+#    #+#             */
-/*   Updated: 2026/05/02 20:39:40 by vsoares-         ###   ########.fr       */
+/*   Updated: 2026/05/02 22:13:48 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "includes/so_long.h"
 
 /**
  * @brief Singleton accessor for the main game structure.

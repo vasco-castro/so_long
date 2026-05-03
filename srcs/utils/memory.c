@@ -6,11 +6,11 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:57:16 by vsoares-          #+#    #+#             */
-/*   Updated: 2026/05/02 20:39:40 by vsoares-         ###   ########.fr       */
+/*   Updated: 2026/05/02 22:13:21 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "includes/so_long.h"
 
 void	safe_alloc(void *alloc)
 {

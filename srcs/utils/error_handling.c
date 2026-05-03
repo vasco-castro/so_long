@@ -6,11 +6,11 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 18:16:50 by vsoares-          #+#    #+#             */
-/*   Updated: 2026/05/02 20:39:40 by vsoares-         ###   ########.fr       */
+/*   Updated: 2026/05/02 22:13:21 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "includes/so_long.h"
 
 void	exit_so_long(char *error)
 {

@@ -6,11 +6,11 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 16:13:35 by vsoares-          #+#    #+#             */
-/*   Updated: 2026/05/02 20:39:40 by vsoares-         ###   ########.fr       */
+/*   Updated: 2026/05/02 22:13:21 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "includes/so_long.h"
 
 static unsigned int	get_px(t_image *img, int x, int y)
 {

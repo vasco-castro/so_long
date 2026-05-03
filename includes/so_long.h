@@ -6,19 +6,19 @@
 /*   By: vsoares- <vsoares-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:17:06 by vsoares-          #+#    #+#             */
-/*   Updated: 2026/05/02 20:29:47 by vsoares-         ###   ########.fr       */
+/*   Updated: 2026/05/03 13:11:09 by vsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../lib/libft/libft.h"
+# include "libs/libft/libft.h"
 
 # ifdef __APPLE__
-#  include "../lib/minilibx-opengl/mlx.h"
+#  include "libs/minilibx-linux/mlx.h"
 # else
-#  include "../lib/minilibx-linux/mlx.h"
+#  include "libs/minilibx-linux/mlx.h"
 # endif
 
 # include "handlers.h"

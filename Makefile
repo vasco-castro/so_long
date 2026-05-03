@@ -1,22 +1,18 @@
 -include mk/config.mk
 -include mk/targets.mk
 
-NAME = so_long
+NAME	:= so_long
 
 all: $(NAME)
 
-$(NAME): $(MLX) $(LIBFT) $(OBJ)
+$(NAME): $(LIBFT) $(MLX) $(OBJS)
 	@printf "$(GREEN)Building $(NAME).$(RESET)\n"
 	@$(BANNER)
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(LIBFT_FLAGS) $(MLX) $(MLX_FLAGS) -o $(NAME)
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LIBFT_FLAGS) $(MLX) $(MLX_FLAGS) -o $(NAME)
 
 clean:
 	@printf "$(YELLOW)Cleaning objects.$(RESET)\n"
-	@$(RM) $(OBJ)
+	@$(RM) $(OBJS)
 
 fclean: clean
 	@printf "$(YELLOW)Cleaning binaries.$(RESET)\n"
